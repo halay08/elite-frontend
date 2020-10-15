@@ -11,30 +11,22 @@ import 'react-app-polyfill/stable';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import FontFaceObserver from 'fontfaceobserver';
 import * as serviceWorker from 'serviceWorker';
 
-import 'sanitize.css/sanitize.css';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from 'styled-components';
+import theme from './styles/theme';
 
-// Initialize languages
-import './locales/i18n';
-
+// Import root app
 import { App } from 'app';
 
 import { HelmetProvider } from 'react-helmet-async';
 
 import { configureAppStore } from 'store/configureStore';
 
-import { ThemeProvider } from 'styles/theme/ThemeProvider';
-
-// Observe loading of Inter (to remove 'Inter', remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Inter', {});
-
-// When Inter is loaded, add a font-family using Inter to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
-});
+// Initialize languages
+import './locales/i18n';
 
 const store = configureAppStore();
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
@@ -43,17 +35,21 @@ interface Props {
   Component: typeof App;
 }
 const ConnectedApp = ({ Component }: Props) => (
-  <Provider store={store}>
-    <ThemeProvider>
+  <>
+    <CssBaseline />
+    <Provider store={store}>
       <HelmetProvider>
-        <React.StrictMode>
-          <Component />
-        </React.StrictMode>
+        <MuiThemeProvider theme={theme}>
+          <ThemeProvider theme={theme}>
+            <React.StrictMode>
+              <Component />
+            </React.StrictMode>
+          </ThemeProvider>
+        </MuiThemeProvider>
       </HelmetProvider>
-    </ThemeProvider>
-  </Provider>
+    </Provider>
+  </>
 );
-
 const render = (Component: typeof App) => {
   ReactDOM.render(<ConnectedApp Component={Component} />, MOUNT_NODE);
 };
