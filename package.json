@@ -23,6 +23,8 @@
     "cross-env": "7.0.2",
     "eslint-config-prettier": "6.10.1",
     "eslint-plugin-prettier": "3.1.2",
+    "firebase": "7.23.0",
+    "firebaseui": "4.7.0",
     "fontfaceobserver": "2.1.0",
     "husky": "4.2.3",
     "i18next": "19.3.4",
@@ -36,6 +38,7 @@
     "react-app-polyfill": "1.0.6",
     "react-dom": "16.13.0",
     "react-helmet-async": "1.0.4",
+    "react-hook-form": "6.9.3",
     "react-i18next": "11.3.4",
     "react-redux": "7.2.0",
     "react-router-dom": "5.1.2",
@@ -70,7 +73,7 @@
     "lint:fix": "yarn eslint -- --fix src",
     "lint:css": "stylelint src/**/*.css",
     "generate": "cross-env TS_NODE_PROJECT='./internals/ts-node.tsconfig.json' plop --plopfile internals/generators/plopfile.ts",
-    "prettify": "prettier --write"
+    "prettify": "prettier --write ./src"
   },
   "browserslist": {
     "production": [

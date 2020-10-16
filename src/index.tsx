@@ -7,6 +7,7 @@
 
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
+import 'firebaseui/dist/firebaseui.css';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -27,6 +28,7 @@ import { configureAppStore } from 'store/configureStore';
 
 // Initialize languages
 import './locales/i18n';
+import { AuthProvider } from 'contexts/AuthContext';
 
 const store = configureAppStore();
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
@@ -42,7 +44,9 @@ const ConnectedApp = ({ Component }: Props) => (
         <MuiThemeProvider theme={theme}>
           <ThemeProvider theme={theme}>
             <React.StrictMode>
-              <Component />
+              <AuthProvider>
+                <Component />
+              </AuthProvider>
             </React.StrictMode>
           </ThemeProvider>
         </MuiThemeProvider>

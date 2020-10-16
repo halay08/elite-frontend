@@ -9,9 +9,15 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
+import { useAuth } from 'contexts/AuthContext';
 
 export function HomePage() {
   const classes = useStyles();
+  const { user } = useAuth();
+  if (!user.isLoggedIn) {
+    return <React.Fragment>loading...</React.Fragment>;
+  }
+
   const title = 'Title';
   const overview = 'Overview';
   return (

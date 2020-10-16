@@ -12,6 +12,8 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
+import { Login } from './containers/Login/Loadable';
+import { ProfileRedirect, LoginRedirect } from './components/Router';
 
 export function App() {
   return (
@@ -24,7 +26,8 @@ export function App() {
       </Helmet>
 
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <LoginRedirect exact path="/" component={HomePage} />
+        <ProfileRedirect exact path="/login" component={Login} />
         <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
