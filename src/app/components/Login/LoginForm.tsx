@@ -16,9 +16,9 @@ import { useTranslation } from 'react-i18next';
 import { translations } from 'locales/i18n';
 
 type LoginData = {
-  email: string,
-  password: string,
-}
+  email: string;
+  password: string;
+};
 
 export const Greeting = lazyLoad(
   () => import('./Greeting'),
@@ -48,7 +48,7 @@ export default function LoginForm() {
   }, []);
 
   async function onSubmit(loginData: LoginData) {
-    const { email, password } = loginData
+    const { email, password } = loginData;
     setIsLoading(true);
 
     await auth.signInWithEmailAndPassword(email, password).catch(err => {
@@ -64,7 +64,9 @@ export default function LoginForm() {
       <div id="firebaseui-auth-container" />
       <div className={classes.formDividerContainer}>
         <div className={classes.formDivider} />
-        <Typography className={classes.formDividerWord}>{translator(loginFormTexts.or)}</Typography>
+        <Typography className={classes.formDividerWord}>
+          {translator(loginFormTexts.or)}
+        </Typography>
         <div className={classes.formDivider} />
       </div>
       <Fade in={Boolean(errorMsg)}>
@@ -86,14 +88,10 @@ export default function LoginForm() {
           type="email"
           fullWidth
           inputRef={register({
-            required: `${translator(
-              loginFormTexts.emailInput.requiredError,
-            )}`,
+            required: `${translator(loginFormTexts.emailInput.requiredError)}`,
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              message: `${translator(
-                loginFormTexts.emailInput.invalidError,
-              )}`,
+              message: `${translator(loginFormTexts.emailInput.invalidError)}`,
             },
           })}
           error={errors.email && true}

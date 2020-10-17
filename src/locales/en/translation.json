@@ -18,5 +18,44 @@
     "or": "or",
     "submit": "Login",
     "forgotPassword": "Forgot Password"
+  },
+  "profile": {
+    "updateButton": "Update",
+    "details": {
+      "title": "Profile details",
+      "avatarButton": "Choose...",
+      "afternoon": "Good afternoon!",
+      "name": {
+        "label": "Name",
+        "placeholder": "Please input your name"
+      },
+      "surname": {
+        "label": "Surname",
+        "placeholder": "Please input your surname"
+      }
+    },
+    "about": {
+      "title": "About you",
+      "study": {
+        "label": "I study",
+        "placeholder": "Please input your information"
+      },
+      "studyAt": {
+        "label": "At",
+        "placeholder": "Please input your information"
+      },
+      "work": {
+        "label": "I work as (a)",
+        "placeholder": "Please input your information"
+      },
+      "workAt": {
+        "label": "At",
+        "placeholder": "Please input your information"
+      },
+      "description": {
+        "label": "Introduction",
+        "placeholder": "Write a short introduction about yourself (max 500 characters)"
+      }
+    }
   }
 }

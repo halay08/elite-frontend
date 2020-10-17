@@ -1,6 +1,7 @@
 import { auth } from 'config/firebase';
 import PropTypes from 'prop-types';
 import React, { createContext, useEffect, useState, useContext } from 'react';
+import { STORAGE_TOKEN } from 'config/constants';
 
 type User = {
   user: any;
@@ -29,8 +30,10 @@ function AuthProvider({ children }) {
           user: { ...firebaseUser },
           token,
         });
+        localStorage.setItem(STORAGE_TOKEN, token);
       } else {
         setUser(defaultUser);
+        localStorage.removeItem(STORAGE_TOKEN);
       }
 
       setLoading(false);
