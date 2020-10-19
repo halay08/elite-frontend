@@ -57,5 +57,40 @@
         "placeholder": "Write a short introduction about yourself (max 500 characters)"
       }
     }
+  },
+  "userRoles": {
+    "student": "Student",
+    "tutor": "Tutor"
+  },
+  "registerForm": {
+    "welcome": "Welcome!",
+    "title": "Create your account",
+    "roleLabel": "Role",
+    "emailInput": {
+      "placeholder": "Email",
+      "requiredError": "Enter your email",
+      "invalidError": "Enter a valid email address"
+    },
+    "passwordInput": {
+      "placeholder": "Password",
+      "requiredError": "Enter your password",
+      "invalidError": "Your password has to contain at least 8 characters, includes at least: 1 digit, 1 upper case and 1 lower case"
+    },
+    "submit": "Create your account",
+    "verifyNotice": "Please verify your account via"
+  },
+  "emailTemplates": {
+    "emailVerification": {
+      "wrongURL": "Your link is not correct",
+      "pageTitle": "Email Verification",
+      "success": {
+        "title": "Your email has been verified",
+        "subTitle": "You could login with your new account now",
+        "login": "Login"
+      },
+      "fail": {
+        "title": "Something went wrong"
+      }
+    }
   }
 }

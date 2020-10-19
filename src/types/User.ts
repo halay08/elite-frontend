@@ -9,3 +9,10 @@ export type User = {
 
   avatar?: string;
 };
+
+export type SignUpUser = {
+  role: string;
+  email: string;
+  uid: string;
+  createdAt: string;
+};

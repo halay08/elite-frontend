@@ -1,5 +1,6 @@
 import BaseService from './baseService';
 import { Student } from 'types/Student';
+import { SignUpUser } from 'types/User';
 
 class UserService extends BaseService {
   async get(_id: String) {
@@ -19,6 +20,16 @@ class UserService extends BaseService {
       const url = `${this.baseUrl}/${_id}`;
       const requestOption = { payload: user };
       const data = this.requestWithToken('PUT', url, requestOption);
+      return data;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async signUp(user: SignUpUser) {
+    try {
+      const url = this.baseUrl;
+      const data = this.requestWithoutToken('POST', url, { payload: user });
       return data;
     } catch (err) {
       throw err;

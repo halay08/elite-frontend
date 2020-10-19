@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Grid, makeStyles, Tabs, Tab } from '@material-ui/core';
 import { LoginForm } from 'app/components/Login';
+import { RegisterForm } from 'app/components/RegisterForm';
 
 export function Login() {
   const classes = useStyles();
@@ -27,7 +28,7 @@ export function Login() {
               <Tab label="New User" classes={{ root: classes.tab }} />
             </Tabs>
             {activeTabId === 0 && <LoginForm />}
-            {/* {activeTabId === 1 && <RegisterForm />} */}
+            {activeTabId === 1 && <RegisterForm />}
           </div>
         </div>
       </Grid>
