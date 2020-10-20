@@ -2,6 +2,7 @@ import { auth } from 'config/firebase';
 import PropTypes from 'prop-types';
 import React, { createContext, useEffect, useState, useContext } from 'react';
 import { STORAGE_TOKEN } from 'config/constants';
+import path from 'ramda.path';
 
 type User = {
   user: any;
@@ -15,6 +16,8 @@ const defaultUser: User = {
   token: '',
 };
 
+const SIGN_IN_PASSWORD_PROVIDER_ID = 'password';
+
 const AuthContext = createContext(defaultUser);
 
 function AuthProvider({ children }) {
@@ -24,9 +27,21 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = auth.onIdTokenChanged(async firebaseUser => {
       if (firebaseUser) {
-        const token = await firebaseUser.getIdToken();
+        const isEmailPasswordProvider = (function () {
+          const providerData = path(['providerData', 0], firebaseUser) || {};
+          const providerId = path(['providerId'], providerData) || '';
+
+          return providerId === SIGN_IN_PASSWORD_PROVIDER_ID;
+        })();
+
+        const isLoggedIn = isEmailPasswordProvider
+          ? firebaseUser.emailVerified
+          : true;
+        const token = isEmailPasswordProvider
+          ? ''
+          : await firebaseUser.getIdToken();
         setUser({
-          isLoggedIn: true,
+          isLoggedIn,
           user: { ...firebaseUser },
           token,
         });

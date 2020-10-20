@@ -11065,6 +11065,11 @@ ramda.isempty@0.26.1:
   resolved "https://registry.yarnpkg.com/ramda.isempty/-/ramda.isempty-0.26.1.tgz#86f65428353a747d0b6442a85c2b9b27c1f0d481"
   integrity sha512-ToS3hDfbBJZJdT5GQAwHRd+WLw/ERDfOHfvrQg0TC7e8Lr+rv8QhwCfyuxusrves4fAsMdMLi1vxnnenzbZ1Pg==
 
+ramda.path@0.26.1:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/ramda.path/-/ramda.path-0.26.1.tgz#4b1603412141d94e0560b2d8b1744ad1ebe15bce"
+  integrity sha512-RIgReA+EalkISQxwjzcp4mQUBT88IXs5WP1dpzUqySw0cED30PLXWTEUBKsEldJw2/k9REY71j3zjT3XWbu9Yg==
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
