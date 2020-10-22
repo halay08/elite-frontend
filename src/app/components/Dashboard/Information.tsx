@@ -5,6 +5,7 @@ import { translations } from 'locales/i18n';
 import { Link } from 'react-router-dom';
 import { User, mockUser, initUser } from 'types/User';
 import { UserAvatar } from './UserAvatar';
+import { getUserName } from 'helpers';
 
 const Information = () => {
   const classes = useStyles();
@@ -16,8 +17,7 @@ const Information = () => {
     setUser(mockUser);
   }, []);
 
-  const fullName = `${user.name || ''} ${user.surname || ''}`.trim();
-  const name = fullName || user.email || user.phoneNumber || '';
+  const name = getUserName(user);
   const createdAt = user.createdAt
     ? new Date(user.createdAt).toLocaleDateString()
     : '';

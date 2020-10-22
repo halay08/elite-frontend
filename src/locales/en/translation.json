@@ -20,6 +20,7 @@
     "forgotPassword": "Forgot Password"
   },
   "profile": {
+    "requiredField": "This field is required",
     "updateButton": "Update",
     "details": {
       "title": "Profile details",
