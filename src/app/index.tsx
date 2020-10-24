@@ -16,6 +16,7 @@ import { Login } from './containers/Login/Loadable';
 import { ProfileRedirect, LoginRedirect } from './components/Router';
 import { Profile } from './containers/Profile/Loadable';
 import { EmailVerification } from './containers/EmailVerification/Loadable';
+import { Dashboard } from './containers/Dashboard/Loadable';
 
 export function App() {
   return (
@@ -32,6 +33,7 @@ export function App() {
         <ProfileRedirect exact path="/login" component={Login} />
         <LoginRedirect exact path="/profile" component={Profile} />
         <Route exact path="/email-verification" component={EmailVerification} />
+        <LoginRedirect exact path="/dashboard" component={Dashboard} />
         <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>

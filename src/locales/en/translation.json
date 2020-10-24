@@ -92,5 +92,14 @@
         "title": "Something went wrong"
       }
     }
+  },
+  "dashboard": {
+    "since": "Since",
+    "level": "Tutorse level",
+    "coins": "Coins",
+    "sessions": "Sessions",
+    "coming": "upcoming sessions",
+    "uncompletedProfile": "Your profile is not completed",
+    "completeProfile": "Complete your profile"
   }
 }
