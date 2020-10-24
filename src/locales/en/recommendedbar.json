@@ -1,0 +1,10 @@
+{
+  "recommendedBar": {
+    "title": "Recommended tutors",
+    "subTitle": "Based on your level, we think that these {{noRecommended}} tutors would be perfect.",
+    "button": {
+      "choose": "Choose according to your availability",
+      "online": "Online tutors"
+    }
+  }
+}
