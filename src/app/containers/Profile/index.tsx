@@ -7,6 +7,7 @@ import { useAuth } from 'contexts/AuthContext';
 import { ProfileTab } from 'app/components/Profile';
 import { UserService } from 'services';
 import isEmpty from 'ramda.isempty';
+import TutorBlock from 'app/components/TutorBlock/TutorBlock';
 
 export function Profile() {
   const classes = useStyles();
@@ -43,7 +44,7 @@ export function Profile() {
             <Tab label="Session" />
             <Tab label="Help" />
           </Tabs>
-          {activeTabId === 0 && <div />}
+          {activeTabId === 0 && <TutorBlock /> /* For Review, Update later */}
           {activeTabId === 1 && !isEmpty(userData) && (
             <ProfileTab _id={user.uid} userData={userData} />
           )}
