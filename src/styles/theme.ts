@@ -10,7 +10,7 @@ const info = '#9013FE';
 const lightenRate = 7.5;
 const darkenRate = 15;
 
-export default createMuiTheme({
+const globalTheme = createMuiTheme({
   typography: {
     h1: {
       fontSize: '3rem',
@@ -69,66 +69,87 @@ export default createMuiTheme({
       light: '#F3F5FF',
     },
   },
-  customShadows: {
-    widget:
-      '0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
-    widgetDark:
-      '0px 3px 18px 0px #4558A3B3, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
-    widgetWide:
-      '0px 12px 33px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
-  },
-  overrides: {
-    MuiBackdrop: {
-      root: {
-        backgroundColor: '#4A4A4A1A',
-      },
+  customShadows: {},
+});
+
+export default createMuiTheme(
+  {
+    customShadows: {
+      widget:
+        '0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
+      widgetDark:
+        '0px 3px 18px 0px #4558A3B3, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
+      widgetWide:
+        '0px 12px 33px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
     },
-    MuiMenu: {
-      paper: {
-        boxShadow:
-          '0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
+    overrides: {
+      MuiBackdrop: {
+        root: {
+          backgroundColor: '#4A4A4A1A',
+        },
       },
-    },
-    MuiSelect: {
-      icon: {
-        color: '#B9B9B9',
+      MuiMenu: {
+        paper: {
+          boxShadow:
+            '0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
+        },
       },
-    },
-    MuiListItem: {
-      root: {
-        '&$selected': {
-          backgroundColor: '#F3F5FF !important',
-          '&:focus': {
+      MuiSelect: {
+        icon: {
+          color: '#B9B9B9',
+        },
+      },
+      MuiListItem: {
+        root: {
+          '&$selected': {
+            backgroundColor: '#F3F5FF !important',
+            '&:focus': {
+              backgroundColor: '#F3F5FF',
+            },
+          },
+        },
+        button: {
+          '&:hover, &:focus': {
             backgroundColor: '#F3F5FF',
           },
         },
       },
-      button: {
-        '&:hover, &:focus': {
-          backgroundColor: '#F3F5FF',
+      MuiTouchRipple: {
+        child: {
+          backgroundColor: 'white',
+        },
+      },
+      MuiTableRow: {
+        root: {
+          height: 56,
+        },
+      },
+      MuiTableCell: {
+        root: {
+          borderBottom: '1px solid rgba(224, 224, 224, .5)',
+        },
+        head: {
+          fontSize: '0.95rem',
+        },
+        body: {
+          fontSize: '0.95rem',
+        },
+      },
+      MuiInput: {
+        underline: {
+          backgroundColor: 'transparent',
+          '&:before': {
+            borderBottomColor: globalTheme.palette.primary.light,
+          },
+          '&:after': {
+            borderBottomColor: globalTheme.palette.primary.main,
+          },
+          '&:hover:before': {
+            borderBottomColor: `${globalTheme.palette.primary.light} !important`,
+          },
         },
       },
     },
-    MuiTouchRipple: {
-      child: {
-        backgroundColor: 'white',
-      },
-    },
-    MuiTableRow: {
-      root: {
-        height: 56,
-      },
-    },
-    MuiTableCell: {
-      root: {
-        borderBottom: '1px solid rgba(224, 224, 224, .5)',
-      },
-      head: {
-        fontSize: '0.95rem',
-      },
-      body: {
-        fontSize: '0.95rem',
-      },
-    },
   },
-});
+  globalTheme,
+);

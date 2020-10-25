@@ -101,5 +101,31 @@
     "coming": "upcoming sessions",
     "uncompletedProfile": "Your profile is not completed",
     "completeProfile": "Complete your profile"
+  },
+  "forgetPasswordForm": {
+    "title": "Forgot your password?",
+    "subTitle": "Enter your email address below and we'll send you password reset instructions.",
+    "emailInput": {
+      "placeholder": "Email",
+      "requiredError": "Enter your email",
+      "invalidError": "Enter a valid email address"
+    },
+    "submit": "Recover",
+    "verifyNotice": "Please verify your account via",
+    "userNotFound": "There was no user with the email provided",
+    "support": "I can't recover my account using this page"
+  },
+  "resetPassword": {
+    "title": "Reset your password for",
+    "wrongURL": "Your link is not correct",
+    "success": {
+      "title": "Password changed",
+      "subTitle": "You can now login with your new password",
+      "login": "Login"
+    },
+    "fail": {
+      "title": "Try resetting your password again"
+    },
+    "save": "Save"
   }
 }
