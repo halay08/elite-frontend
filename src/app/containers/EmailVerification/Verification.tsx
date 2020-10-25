@@ -12,6 +12,7 @@ import { auth } from 'config/firebase';
 import { useTranslation } from 'react-i18next';
 import { translations } from 'locales/i18n';
 import { Link } from 'react-router-dom';
+import { getTranslatedError } from 'utils/helpers';
 
 type Props = {
   actionCode: string;
@@ -33,13 +34,13 @@ export function Verification({ actionCode }: Props) {
           setValidCode(true);
         },
         error => {
-          setError(error.message);
+          setError(getTranslatedError(translator, error.message));
           setValidCode(false);
         },
       );
       setVerifiedCode(true);
     })();
-  }, [actionCode]);
+  }, [actionCode, translator]);
 
   const renderContent = () => {
     return (
@@ -47,10 +48,10 @@ export function Verification({ actionCode }: Props) {
         {!verifiedCode && <CircularProgress size={26} />}
         {verifiedCode && validCode && (
           <>
-            <Typography variant="h2" className={classes.title}>
+            <Typography variant="h3" className={classes.title}>
               {translator(translatedTexts.success.title)}
             </Typography>
-            <Typography variant="h5" className={classes.subTitle}>
+            <Typography variant="body2" className={classes.subTitle}>
               {translator(translatedTexts.success.subTitle)}
             </Typography>
             <Box width="100%" className={classes.buttonContainer}>
@@ -70,10 +71,14 @@ export function Verification({ actionCode }: Props) {
         )}
         {verifiedCode && !validCode && (
           <>
-            <Typography variant="h2" color="error" className={classes.title}>
+            <Typography variant="h3" color="error" className={classes.title}>
               {translator(translatedTexts.fail.title)}
             </Typography>
-            <Typography variant="h5" color="error" className={classes.subTitle}>
+            <Typography
+              variant="body2"
+              color="error"
+              className={classes.subTitle}
+            >
               {error}
             </Typography>
           </>
@@ -106,7 +111,6 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(4),
   },
   subTitle: {
-    fontWeight: 500,
     textAlign: 'center',
     marginTop: theme.spacing(2),
   },

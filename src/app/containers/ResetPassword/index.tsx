@@ -8,10 +8,10 @@ type Props = {
   actionCode: string;
 };
 
-export function EmailVerification({ actionCode = '' }: Props) {
+export function ResetPassword({ actionCode = '' }: Props) {
   const classes = useStyles();
   const { t: translator } = useTranslation();
-  const translatedTexts = translations.emailTemplates.emailVerification;
+  const translatedTexts = translations.resetPassword;
 
   return !actionCode ? (
     <Container>
@@ -25,9 +25,6 @@ export function EmailVerification({ actionCode = '' }: Props) {
 }
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     fontWeight: 500,
     textAlign: 'center',

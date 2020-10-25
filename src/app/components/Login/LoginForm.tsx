@@ -14,6 +14,7 @@ import { lazyLoad } from 'utils/loadable';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { translations } from 'locales/i18n';
+import { Link } from 'react-router-dom';
 
 type LoginData = {
   email: string;
@@ -77,12 +78,6 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
           name="email"
-          InputProps={{
-            classes: {
-              underline: classes.textFieldUnderline,
-              input: classes.textField,
-            },
-          }}
           margin="normal"
           placeholder={translator(loginFormTexts.emailInput.placeholder)}
           type="email"
@@ -99,12 +94,6 @@ export default function LoginForm() {
         />
         <TextField
           name="password"
-          InputProps={{
-            classes: {
-              underline: classes.textFieldUnderline,
-              input: classes.textField,
-            },
-          }}
           margin="normal"
           placeholder={translator(loginFormTexts.passwordInput.placeholder)}
           type="password"
@@ -136,7 +125,13 @@ export default function LoginForm() {
               {translator(loginFormTexts.submit)}
             </Button>
           )}
-          <Button color="primary" size="large" className={classes.forgetButton}>
+          <Button
+            component={Link}
+            color="primary"
+            size="large"
+            className={classes.forgetButton}
+            to="/forgot-password"
+          >
             {translator(loginFormTexts.forgotPassword)}
           </Button>
         </div>
@@ -188,20 +183,6 @@ const useStyles = makeStyles(theme => ({
   },
   errorMessage: {
     textAlign: 'center',
-  },
-  textFieldUnderline: {
-    '&:before': {
-      borderBottomColor: theme.palette.primary.light,
-    },
-    '&:after': {
-      borderBottomColor: theme.palette.primary.main,
-    },
-    '&:hover:before': {
-      borderBottomColor: `${theme.palette.primary.light} !important`,
-    },
-  },
-  textField: {
-    borderBottomColor: theme.palette.background.light,
   },
   formButtons: {
     width: '100%',

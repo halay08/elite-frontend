@@ -4,7 +4,6 @@ import {
   CircularProgress,
   Collapse,
   Fade,
-  Input,
   InputLabel,
   MenuItem,
   Select,
@@ -17,7 +16,9 @@ import { auth } from 'config/firebase';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { translations } from 'locales/i18n';
-import { UserService } from 'services';
+import { getTranslatedError } from 'utils/helpers';
+
+// import { UserService } from 'services';
 
 type UserData = {
   role: string;
@@ -47,28 +48,27 @@ export function RegisterForm() {
   };
 
   const onSubmit = async (userData: UserData) => {
-    const { email, password, role } = userData;
+    const { email, password } = userData;
     setIsLoading(true);
     await auth
       .createUserWithEmailAndPassword(email, password)
       .then(async ({ user }) => {
         if (user) {
           try {
-            await UserService.signUp({
-              role,
-              email,
-              uid: user.uid,
-              createdAt: user.metadata.creationTime || '',
-            });
+            // await UserService.signUp({
+            //   role,
+            //   email,
+            //   uid: user.uid,
+            // });
             await sendEmailVerification();
             await auth.signOut();
           } catch (error) {
-            setError(error.message);
+            setError(getTranslatedError(translator, error.message));
           }
         }
       })
       .catch(function (error) {
-        setError(error.message);
+        setError(getTranslatedError(translator, error.message));
       });
     setIsLoading(false);
   };
@@ -82,7 +82,7 @@ export function RegisterForm() {
       </Typography>
       <Collapse in={!isVerifySent}>
         <div>
-          <Typography variant="h2" className={classes.subGreeting}>
+          <Typography variant="h4" className={classes.subGreeting}>
             {translator(registerFormTexts.title)}
           </Typography>
           <Fade in={showError}>
@@ -102,18 +102,7 @@ export function RegisterForm() {
                 rules={{ required: true }}
                 error={errors.role && true}
                 as={
-                  <Select
-                    fullWidth
-                    labelId="role-label"
-                    input={
-                      <Input
-                        classes={{
-                          underline: classes.textFieldUnderline,
-                          input: classes.textField,
-                        }}
-                      />
-                    }
-                  >
+                  <Select fullWidth labelId="role-label">
                     <MenuItem value={USER_ROLES.student}>
                       {translator(userRolesTexts.student)}
                     </MenuItem>
@@ -125,12 +114,6 @@ export function RegisterForm() {
               />
             </div>
             <TextField
-              InputProps={{
-                classes: {
-                  underline: classes.textFieldUnderline,
-                  input: classes.textField,
-                },
-              }}
               margin="normal"
               placeholder={translator(registerFormTexts.emailInput.placeholder)}
               type="email"
@@ -151,12 +134,6 @@ export function RegisterForm() {
               helperText={errors.email ? errors.email.message : ''}
             />
             <TextField
-              InputProps={{
-                classes: {
-                  underline: classes.textFieldUnderline,
-                  input: classes.textField,
-                },
-              }}
               margin="normal"
               placeholder={translator(
                 registerFormTexts.passwordInput.placeholder,
@@ -216,13 +193,11 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(4),
   },
   subGreeting: {
-    fontWeight: 500,
     textAlign: 'center',
     marginTop: theme.spacing(2),
   },
   creatingButtonContainer: {
     marginTop: theme.spacing(2.5),
-    height: 46,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -242,19 +217,5 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: 'break-spaces',
     color: theme.palette.success.main,
     marginTop: theme.spacing(1),
-  },
-  textFieldUnderline: {
-    '&:before': {
-      borderBottomColor: theme.palette.primary.light,
-    },
-    '&:after': {
-      borderBottomColor: theme.palette.primary.main,
-    },
-    '&:hover:before': {
-      borderBottomColor: `${theme.palette.primary.light} !important`,
-    },
-  },
-  textField: {
-    // borderBottomColor: theme.palette.background.light,
   },
 }));
