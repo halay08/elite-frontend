@@ -1,11 +1,12 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
-import { Information } from 'app/components/Dashboard';
+import { Information, Tabs } from 'app/components/Dashboard';
 
 const Dashboard = () => {
   return (
     <Container>
       <Information />
+      <Tabs />
     </Container>
   );
 };

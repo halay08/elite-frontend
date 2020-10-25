@@ -125,6 +125,7 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     textTransform: 'none',
+    borderRadius: 0,
   },
   info: {
     marginTop: theme.spacing(1),

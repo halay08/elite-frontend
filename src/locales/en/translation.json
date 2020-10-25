@@ -100,7 +100,26 @@
     "sessions": "Sessions",
     "coming": "upcoming sessions",
     "uncompletedProfile": "Your profile is not completed",
-    "completeProfile": "Complete your profile"
+    "completeProfile": "Complete your profile",
+    "tabs": {
+      "upcoming": "Upcoming sessions",
+      "completed": "Completed sessions",
+      "recommended": "Recommended tutors"
+    },
+    "emptySessions": {
+      "title": "You have not booked any tutors yet",
+      "button": "Book your tutors now"
+    },
+    "sessionsTable": {
+      "date": "Date",
+      "day": "Day",
+      "session": "Session",
+      "tutor": "Tutor",
+      "button": {
+        "upcoming": "See all coming sessions in your calendar",
+        "completed": "See all completed sessions in your calendar"
+      }
+    }
   },
   "forgetPasswordForm": {
     "title": "Forgot your password?",
