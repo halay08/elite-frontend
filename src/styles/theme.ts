@@ -72,6 +72,12 @@ const globalTheme = createMuiTheme({
     },
   },
   customShadows: {},
+  brand: '#E22525',
+  footerHeight: 72,
+  mobileFooterHeight: 56,
+  sidebarWidth: 355,
+  sidebarMobileHeight: 90,
+  mobileTopBarHeight: 52,
 });
 
 export default createMuiTheme(
@@ -84,6 +90,12 @@ export default createMuiTheme(
       widgetWide:
         '0px 12px 33px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
     },
+    brand: '#E22525',
+    footerHeight: 72,
+    mobileFooterHeight: 56,
+    sidebarWidth: 355,
+    sidebarMobileHeight: 90,
+    mobileTopBarHeight: 52,
     overrides: {
       MuiBackdrop: {
         root: {
