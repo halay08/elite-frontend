@@ -8,7 +8,7 @@ const success = '#3CD4A0';
 const info = '#9013FE';
 
 const lightenRate = 7.5;
-const darkenRate = 15;
+const darkenRate = 45;
 
 const globalTheme = createMuiTheme({
   typography: {
@@ -37,6 +37,7 @@ const globalTheme = createMuiTheme({
       main: primary,
       light: tinycolor(primary).lighten(lightenRate).toHexString(),
       dark: tinycolor(primary).darken(darkenRate).toHexString(),
+      contrastText: '#FFFFFF',
     },
     secondary: {
       main: secondary,

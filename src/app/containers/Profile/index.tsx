@@ -8,6 +8,8 @@ import { ProfileTab } from 'app/components/Profile';
 import { UserService } from 'services';
 import isEmpty from 'ramda.isempty';
 import TutorBlock from 'app/components/TutorBlock/TutorBlock';
+import { Timeline } from 'app/components/Timeline';
+import { mockStudent } from 'types/Student';
 
 export function Profile() {
   const classes = useStyles();
@@ -52,6 +54,7 @@ export function Profile() {
           {activeTabId === 3 && <div />}
         </Grid>
       </Container>
+      <Timeline userData={mockStudent} />
     </>
   );
 }

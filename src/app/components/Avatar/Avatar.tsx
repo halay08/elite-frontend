@@ -21,8 +21,8 @@ const getNameInitials = user => {
   return '';
 };
 
-export default function UserAvatar() {
-  const classes = useStyles();
+export default function UserAvatar({ size = 14 }) {
+  const classes = useStyles(size)();
   const { user } = useAuth();
 
   if (user.photoURL) {
@@ -49,18 +49,19 @@ export default function UserAvatar() {
   );
 }
 
-const useStyles = makeStyles(theme => ({
-  avatar: {
-    margin: 'auto',
-    width: theme.spacing(14),
-    height: theme.spacing(14),
-  },
+const useStyles = size =>
+  makeStyles(theme => ({
+    avatar: {
+      margin: 'auto',
+      width: theme.spacing(size),
+      height: theme.spacing(size),
+    },
 
-  nameInitials: {
-    cursor: 'default',
-  },
+    nameInitials: {
+      cursor: 'default',
+    },
 
-  personIcon: {
-    fontSize: theme.spacing(7),
-  },
-}));
+    personIcon: {
+      fontSize: theme.spacing(7),
+    },
+  }));

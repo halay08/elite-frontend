@@ -1,8 +1,6 @@
-import { User } from './User';
+import { User, mockUser } from './User';
 
-export type Student = {
-  user: User;
-
+export type Student = User & {
   studyTitle?: string;
 
   studyPlace?: string;
@@ -12,4 +10,12 @@ export type Student = {
   jobPlace?: string;
 
   followings?: any;
+};
+
+export const mockStudent: Student = {
+  ...mockUser,
+  studyTitle: 'IT',
+  studyPlace: 'DUT',
+  jobTitle: 'Developer',
+  jobPlace: 'Elite',
 };

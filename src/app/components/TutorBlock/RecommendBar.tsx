@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 import { translations } from 'locales/i18n';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +7,7 @@ export default function RecommendBar(): JSX.Element {
   const classes = useStyles();
   const { t: translator } = useTranslation();
   const { recommendedBar } = translations;
-  const [noRecommended, setNoRecommended] = useState(0);
+  const recommended = 0;
 
   return (
     <Grid
@@ -32,7 +32,7 @@ export default function RecommendBar(): JSX.Element {
         </Grid>
         <Grid item>
           <Typography variant="h5">
-            {translator(recommendedBar.subTitle, { noRecommended })}
+            {translator(recommendedBar.subTitle, { recommended })}
           </Typography>
         </Grid>
       </Grid>

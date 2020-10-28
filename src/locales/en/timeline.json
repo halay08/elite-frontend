@@ -1,0 +1,27 @@
+{
+  "timeline": {
+    "title": "Profile timeline",
+    "content": "You haven't completed your profile timeline yet. Before starting booking, you have to complete some step below:",
+    "step": {
+      "verifyNumber": "Verify phone number",
+      "uploadAvatar": "Upload your avatar",
+      "updateInfor": "Update education/job",
+      "shortIntro": "Short introduction",
+      "bookingTrial": "Booking a trial session",
+      "optional": "(optional)",
+      "skipError": "You can't skip a step that isn't optional."
+    },
+    "nextButton": "Next",
+    "backButton": "Back",
+    "skipButton": "Skip",
+    "finishButton": "Finish",
+    "verifyPhone": {
+      "label": "Phone Number",
+      "sendCode": "Send Code",
+      "verifyCode": "Verify"
+    },
+    "userBar": {
+      "since": "User since: "
+    }
+  }
+}
