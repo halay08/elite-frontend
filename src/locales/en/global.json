@@ -1,0 +1,26 @@
+{
+  "timeOfDay": {
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening"
+  },
+  "dayOfWeek": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
+  },
+  "language": {
+    "vietnamese": "Vietnamese",
+    "english": "English"
+  },
+  "level": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "expert": "Expert"
+  }
+}

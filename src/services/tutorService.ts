@@ -16,6 +16,11 @@ class TutorService extends BaseService {
     if (process.env.REACT_APP_USE_MOCK) return Array<Tutor>(20).fill(mockTutor);
     return [];
   }
+
+  async search(data: object): Promise<Array<Tutor>> {
+    if (process.env.REACT_APP_USE_MOCK) return Array<Tutor>(2).fill(mockTutor);
+    return [];
+  }
 }
 
 export default new TutorService('tutors');

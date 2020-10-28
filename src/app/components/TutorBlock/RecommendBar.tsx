@@ -2,19 +2,32 @@ import React, { MouseEventHandler } from 'react';
 import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { Tutor } from 'types/Tutor';
+import { handleAdvancedSearchPopup } from 'store/TutorBlock/actions';
+import { connect } from 'react-redux';
 
-type recommendBarProps = {
+const mapDispathToProps = dispatch => ({
+  handleAdvancedSearchPopup: isOpen =>
+    dispatch(handleAdvancedSearchPopup(isOpen)),
+});
+
+type RecommendBarProps = {
   tutors: Array<Tutor>;
   text: any;
   handleGetOnline: MouseEventHandler<HTMLButtonElement>;
+  handleAdvancedSearchPopup: Function;
 };
-export default function RecommendBar({
+function RecommendBar({
   tutors,
   text,
   handleGetOnline,
-}: recommendBarProps): JSX.Element {
+  handleAdvancedSearchPopup,
+}: RecommendBarProps): JSX.Element {
   const classes = useStyles();
   const { t: translator } = useTranslation();
+
+  const handleOpenAdvancedSearch = () => {
+    handleAdvancedSearchPopup(true);
+  };
 
   return (
     <Grid
@@ -33,7 +46,7 @@ export default function RecommendBar({
         alignItems="flex-start"
       >
         <Grid item>
-          <Typography variant="h1">
+          <Typography variant="h2">
             {translator(text.title, { available: tutors.length })}
           </Typography>
         </Grid>
@@ -54,7 +67,12 @@ export default function RecommendBar({
         alignItems="center"
       >
         <Grid item>
-          <Button variant="contained" color="primary" size="large">
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={handleOpenAdvancedSearch}
+          >
             {translator(text.button.choose)}
           </Button>
         </Grid>
@@ -73,12 +91,12 @@ export default function RecommendBar({
   );
 }
 
+export default connect(null, mapDispathToProps)(RecommendBar);
+
 const useStyles = makeStyles(theme => ({
   container: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
     padding: theme.spacing(2),
-    border: `2px solid ${theme.palette.primary.dark}`,
-    color: theme.palette.primary.dark,
+    backgroundColor: theme.palette.background.white,
+    border: `15px solid ${theme.palette.background.default}`,
   },
 }));
