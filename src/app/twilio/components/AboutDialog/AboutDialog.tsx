@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Divider from '@material-ui/core/Divider';
+import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
 
 import Video from 'twilio-video';
 import { useAppState } from '../../state';
@@ -17,11 +18,14 @@ interface AboutDialogProps {
 
 function AboutDialog({ open, onClose }: PropsWithChildren<AboutDialogProps>) {
   const { roomType } = useAppState();
+  const { room } = useVideoContext();
+
   return (
     <Dialog open={open} onClose={onClose} fullWidth={true} maxWidth="xs">
       <DialogTitle>About</DialogTitle>
       <Divider />
       <DialogContent>
+        <DialogContentText>Room name: {room.name}</DialogContentText>
         <DialogContentText>
           Browser supported: {String(Video.isSupported)}
         </DialogContentText>

@@ -10,6 +10,7 @@ import {
 import useActiveSinkId from './useActiveSinkId/useActiveSinkId';
 import useFirebaseAuth from './useFirebaseAuth/useFirebaseAuth';
 import usePasscodeAuth from './usePasscodeAuth/usePasscodeAuth';
+import useChat from './useChat/useChat';
 import { User } from 'firebase';
 
 export interface StateContextType {
@@ -26,6 +27,10 @@ export interface StateContextType {
   isFetching: boolean;
   activeSinkId: string;
   setActiveSinkId(sinkId: string): void;
+  messages: Array<string[]>;
+  setMessage(message: string[]): void;
+  notificationCount: number;
+  setNotificationCount(count: number): void;
   settings: Settings;
   dispatchSetting: React.Dispatch<SettingsAction>;
   roomType?: RoomType;
@@ -46,6 +51,12 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
   const [error, setError] = useState<TwilioError | null>(null);
   const [isFetching, setIsFetching] = useState(false);
   const [activeSinkId, setActiveSinkId] = useActiveSinkId();
+  const [
+    messages,
+    setMessage,
+    notificationCount,
+    setNotificationCount,
+  ] = useChat();
   const [settings, dispatchSetting] = useReducer(
     settingsReducer,
     initialSettings,
@@ -57,6 +68,10 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     isFetching,
     activeSinkId,
     setActiveSinkId,
+    messages,
+    setMessage,
+    notificationCount,
+    setNotificationCount,
     settings,
     dispatchSetting,
   } as StateContextType;

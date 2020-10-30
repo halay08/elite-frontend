@@ -22,7 +22,6 @@ import { AccountAction } from './containers/AccountAction/Loadable';
 import AppStateProvider from './twilio/state';
 import PrivateRoute from './twilio/components/PrivateRoute/PrivateRoute';
 import { VideoApp } from './twilio/';
-
 export function App() {
   return (
     <BrowserRouter>

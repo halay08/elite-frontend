@@ -2,6 +2,7 @@ import React from 'react';
 import useTrack from '../../hooks/useTrack/useTrack';
 import AudioTrack from '../AudioTrack/AudioTrack';
 import VideoTrack from '../VideoTrack/VideoTrack';
+import DataTrack from '../DataTrack/DataTrack';
 
 import { IVideoTrack } from '../../types';
 import {
@@ -41,6 +42,8 @@ export default function Publication({
       );
     case 'audio':
       return videoOnly ? null : <AudioTrack track={track as IAudioTrack} />;
+    case 'data':
+      return videoOnly ? null : <DataTrack track={track} />;
     default:
       return null;
   }
