@@ -19,6 +19,9 @@ import { EmailVerification } from './containers/EmailVerification/Loadable';
 import { Dashboard } from './containers/Dashboard/Loadable';
 import { ForgetPassword } from './containers/ForgetPassword/Loadable';
 import { AccountAction } from './containers/AccountAction/Loadable';
+import AppStateProvider from './twilio/state';
+import PrivateRoute from './twilio/components/PrivateRoute/PrivateRoute';
+import { VideoApp } from './twilio/';
 
 export function App() {
   return (
@@ -30,24 +33,36 @@ export function App() {
         <meta name="description" content="A React Boilerplate application" />
       </Helmet>
 
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <ProfileRedirect exact path="/login" component={Login} />
-        <LoginRedirect exact path="/profile" component={Profile} />
-        <Route exact path="/email-verification" component={EmailVerification} />
-        <LoginRedirect exact path="/dashboard" component={Dashboard} />
-        <ProfileRedirect
-          exact
-          path="/forgot-password"
-          component={ForgetPassword}
-        />
-        <ProfileRedirect
-          exact
-          path="/account-action"
-          component={AccountAction}
-        />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <AppStateProvider>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <ProfileRedirect exact path="/login" component={Login} />
+          <LoginRedirect exact path="/profile" component={Profile} />
+          <Route
+            exact
+            path="/email-verification"
+            component={EmailVerification}
+          />
+          <LoginRedirect exact path="/dashboard" component={Dashboard} />
+          <ProfileRedirect
+            exact
+            path="/forgot-password"
+            component={ForgetPassword}
+          />
+          <ProfileRedirect
+            exact
+            path="/account-action"
+            component={AccountAction}
+          />
+          <PrivateRoute exact path="/room">
+            <VideoApp />
+          </PrivateRoute>
+          <PrivateRoute path="/room/:URLRoomName">
+            <VideoApp />
+          </PrivateRoute>
+          <Route component={NotFoundPage} />
+        </Switch>
+      </AppStateProvider>
     </BrowserRouter>
   );
 }
