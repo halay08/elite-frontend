@@ -27,7 +27,7 @@ export default function ProfileTab({ _id = '', userData = {} }: any) {
       xs={6}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <ProfileDetail register={register} />
+        <ProfileDetail register={register} user={userData} />
         <About register={register} />
         <Grid item className={classes.updateButton}>
           <Button color="primary" type="submit" variant="contained">

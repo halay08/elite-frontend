@@ -2,7 +2,19 @@ import React from 'react';
 import { Avatar, Typography } from '@material-ui/core';
 import { Person as PersonIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-import { useAuth } from 'contexts/AuthContext';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
+type UserAvatarTypes = {
+  size?: number;
+  user?: {
+    avatar?: string;
+    photoURL?: string;
+    name?: string;
+    surname?: string;
+    displayName?: string;
+  };
+};
 
 const getNameInitials = user => {
   const { name, surname, displayName } = user;
@@ -21,20 +33,29 @@ const getNameInitials = user => {
   return '';
 };
 
-export default function UserAvatar({ size = 14 }) {
+export default function UserAvatar({
+  size = 14,
+  user = {},
+}: UserAvatarTypes): JSX.Element {
   const classes = useStyles(size)();
-  const { user } = useAuth();
+  const { t: translator } = useTranslation();
+  const { avatar } = translations;
 
-  if (user.photoURL) {
+  const url = user.photoURL || user.avatar || '';
+  if (url) {
     return (
-      <Avatar className={classes.avatar} alt="Avatar" src={user.photoURL} />
+      <Avatar
+        className={classes.avatar}
+        alt={translator(avatar.alt)}
+        src={url}
+      />
     );
   }
 
   const nameInitials = getNameInitials(user);
   if (nameInitials) {
     return (
-      <Avatar className={classes.avatar} alt="Avatar">
+      <Avatar className={classes.avatar} alt={translator(avatar.alt)}>
         <Typography className={classes.nameInitials} variant="h2">
           {nameInitials}
         </Typography>
@@ -43,7 +64,7 @@ export default function UserAvatar({ size = 14 }) {
   }
 
   return (
-    <Avatar className={classes.avatar} alt="Avatar">
+    <Avatar className={classes.avatar} alt={translator(avatar.alt)}>
       <PersonIcon className={classes.personIcon} />
     </Avatar>
   );

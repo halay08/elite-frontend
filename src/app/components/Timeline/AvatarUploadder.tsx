@@ -4,8 +4,14 @@ import { Photo as PhotoIcon } from '@material-ui/icons';
 import { translations } from 'locales/i18n';
 import { useTranslation } from 'react-i18next';
 import { UserAvatar } from '../Avatar';
+import { User } from 'types/User';
 
-export default function UploadAvatar(): JSX.Element {
+type AvatarUploadderProps = {
+  userData: User;
+};
+export default function AvatarUploadder({
+  userData,
+}: AvatarUploadderProps): JSX.Element {
   const classes = useStyles();
   const { t: translator } = useTranslation();
   const { profile } = translations;
@@ -19,7 +25,7 @@ export default function UploadAvatar(): JSX.Element {
     >
       <Grid item xs={2} />
       <Grid item xs={4}>
-        <UserAvatar />
+        <UserAvatar user={userData} />
       </Grid>
       <Grid item xs={6}>
         <input id="avatar-input" type="file" hidden accept="image/*" />

@@ -8,7 +8,7 @@ import { UserAvatar } from '../Avatar';
 import { translations } from 'locales/i18n';
 import { useTranslation } from 'react-i18next';
 
-export default function ProfileDetail({ register }: any) {
+export default function ProfileDetail({ register, user }: any) {
   const classes = useStyles();
   const { t: translator } = useTranslation();
   const { profile } = translations;
@@ -23,7 +23,7 @@ export default function ProfileDetail({ register }: any) {
         className={classes.container}
       >
         <Grid item xs={6}>
-          <UserAvatar />
+          <UserAvatar user={user} />
         </Grid>
         <Grid item xs={6}>
           <input id="avatar-input" type="file" hidden accept="image/*" />

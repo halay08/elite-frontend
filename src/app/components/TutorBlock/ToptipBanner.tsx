@@ -1,10 +1,15 @@
 import { Grid, Button, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { translations } from 'locales/i18n';
 import { useTranslation } from 'react-i18next';
 import logo from 'statics/logo.svg';
 
-export default function ToptipBanner(): JSX.Element {
+type toptipBannerProps = {
+  handleGetAll: MouseEventHandler<HTMLButtonElement>;
+};
+export default function ToptipBanner({
+  handleGetAll,
+}: toptipBannerProps): JSX.Element {
   const classes = useStyles();
   const { t: translator } = useTranslation();
   const { banner } = translations;
@@ -44,6 +49,7 @@ export default function ToptipBanner(): JSX.Element {
             color="primary"
             size="large"
             className={classes.button}
+            onClick={handleGetAll}
           >
             {translator(banner.button)}
           </Button>

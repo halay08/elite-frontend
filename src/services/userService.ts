@@ -1,9 +1,10 @@
 import BaseService from './baseService';
 import { Student } from 'types/Student';
-import { SignUpUser } from 'types/User';
+import { SignUpUser, mockUser } from 'types/User';
 
 class UserService extends BaseService {
   async get(_id: String) {
+    if (process.env.REACT_APP_USE_MOCK) return mockUser;
     if (!_id) return {};
     try {
       const url = `${this.baseUrl}/${_id}`;
@@ -15,6 +16,7 @@ class UserService extends BaseService {
   }
 
   async update(_id: String, user: Student) {
+    if (process.env.REACT_APP_USE_MOCK) return mockUser;
     if (!_id) return {};
     try {
       const url = `${this.baseUrl}/${_id}`;
