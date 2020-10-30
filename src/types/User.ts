@@ -7,7 +7,7 @@ export type User = {
   shortIntro?: string;
   createdAt?: number;
   coins: number;
-  level: string;
+  level?: string;
   profileCompleted: number;
   sessions: {
     coming: number;

@@ -120,6 +120,12 @@
         "upcoming": "See all coming sessions in your calendar",
         "completed": "See all completed sessions in your calendar"
       }
+    },
+    "tutorsTable": {
+      "tutor": "Tutor",
+      "country": "Country",
+      "happyUsers": "Happy users",
+      "button": "Book"
     }
   },
   "forgetPasswordForm": {

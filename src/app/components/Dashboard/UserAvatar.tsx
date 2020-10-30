@@ -5,10 +5,12 @@ import { User } from 'types/User';
 
 type Props = {
   user: User;
+  size?: number;
+  withBorder?: boolean;
 };
 
-const UserAvatar = ({ user }: Props) => {
-  const classes = useStyles();
+const UserAvatar = ({ user, size = 7, withBorder = true }: Props) => {
+  const classes = useStyles(size, withBorder)();
   const { avatar = '', name = '', surname = '' } = user;
 
   if (avatar) {
@@ -33,17 +35,18 @@ const UserAvatar = ({ user }: Props) => {
   );
 };
 
-const useStyles = makeStyles(theme => ({
-  avatar: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-    border: `2px solid ${theme.palette.primary.main}`,
-    backgroundColor: 'transparent',
-    color: theme.palette.primary.main,
-  },
-  avatarIcon: {
-    color: theme.palette.primary.main,
-  },
-}));
+const useStyles = (size, withBorder) =>
+  makeStyles(theme => ({
+    avatar: props => ({
+      width: theme.spacing(size),
+      height: theme.spacing(size),
+      border: withBorder ? `2px solid ${theme.palette.primary.main}` : 'none',
+      backgroundColor: 'transparent',
+      color: theme.palette.primary.main,
+    }),
+    avatarIcon: {
+      color: theme.palette.primary.main,
+    },
+  }));
 
 export { UserAvatar };
