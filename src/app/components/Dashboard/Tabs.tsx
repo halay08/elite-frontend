@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { translations } from 'locales/i18n';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import { Sessions } from './Sessions';
+import { RecommendedTutors } from './RecommendedTutors';
 
 const tabs = ['upcoming', 'completed', 'recommended'];
 
@@ -42,7 +43,7 @@ const Tabs = () => {
         </Grid>
       </Grid>
       {current !== 'recommended' && <Sessions type={current} />}
-      {current === 'recommended' && <p>Implementing</p>}
+      {current === 'recommended' && <RecommendedTutors />}
     </>
   );
 };
