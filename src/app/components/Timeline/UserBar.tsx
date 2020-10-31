@@ -28,7 +28,7 @@ export default function UserBar({ userData }: userBarProps): JSX.Element {
       className={classes.container}
     >
       <Grid item>
-        <UserAvatar size={7} />
+        <UserAvatar size={7} user={userData} />
       </Grid>
       <Grid item>
         <Grid container direction="column" className={classes.infomation}>

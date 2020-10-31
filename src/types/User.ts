@@ -13,6 +13,8 @@ export type User = {
     coming: number;
     completed: number;
   };
+
+  country?: any;
 };
 
 export type SignUpUser = {
@@ -38,6 +40,7 @@ export const mockUser: User = {
     completed: 5,
   },
   profileCompleted: 0,
+  country: { name: 'US' },
 };
 
 export const initUser: User = {

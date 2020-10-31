@@ -1,4 +1,7 @@
 {
+  "avatar": {
+    "alt": "Avatar"
+  },
   "loginForm": {
     "greeting": {
       "morning": "Good morning!",

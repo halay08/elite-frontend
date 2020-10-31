@@ -9,12 +9,12 @@ import {
 } from '@material-ui/core';
 import { translations } from 'locales/i18n';
 import { useTranslation } from 'react-i18next';
-import UploadAvatar from './UploadAvatar';
 import VerifyPhoneNumber from './VerifyPhone';
 import UpdateInformation from './Information';
 import ShortIntro from './ShortIntro';
 import TrialBooking from './TrialBooking';
 import { User } from 'types/User';
+import AvatarUploadder from './AvatarUploadder';
 
 type buttonProps = {
   optional?: ReactNode;
@@ -45,7 +45,7 @@ function StepContent({ step, userData }: stepContentProps): JSX.Element {
     case 0:
       return <VerifyPhoneNumber />;
     case 1:
-      return <UploadAvatar />;
+      return <AvatarUploadder userData={userData} />;
     case 2:
       return <UpdateInformation userData={userData} />;
     case 3:

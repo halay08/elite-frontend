@@ -12,7 +12,7 @@ module.exports = {
     'prettier/react',
     'prettier/@typescript-eslint',
   ],
-  plugins: ['prettier'],
+  plugins: ['prettier', 'react-hooks'],
   rules: {
     'prettier/prettier': ['error', prettierOptions],
   },
