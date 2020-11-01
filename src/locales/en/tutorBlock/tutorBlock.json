@@ -1,0 +1,30 @@
+{
+  "tutorThumbnail": {
+    "expertise": {
+      "title": "Expertise",
+      "expand": "Expand",
+      "collapse": "Collapse"
+    },
+    "reviews": {
+      "title": "Reviews",
+      "review": "{{reviews}} happy users",
+      "noReview": "There's no reviews for this tutor"
+    },
+    "category": "Category"
+  },
+  "sortBar": {
+    "title": "Sort by:",
+    "availability": "Availability ",
+    "reviews": "Reviews ",
+    "options": {
+      "0": "Select",
+      "-1": "Decreasing",
+      "1": "Increasing"
+    }
+  },
+  "banner": {
+    "title": "You will only learn from the best tutors.",
+    "subTitle": "Only 10% of tutor applicants meet our standards",
+    "button": "See all tutors"
+  }
+}

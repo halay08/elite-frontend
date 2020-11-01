@@ -5,8 +5,9 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { createInjectorsEnhancer, forceReducerReload } from 'redux-injectors';
 import createSagaMiddleware from 'redux-saga';
-
 import { createReducer } from './reducers';
+import { tutorBlockReducer } from './TutorBlock/reducer';
+import { TutorBlockState } from './TutorBlock/types';
 
 export function configureAppStore() {
   const reduxSagaMonitorOptions = {};
@@ -24,7 +25,7 @@ export function configureAppStore() {
   ];
 
   const store = configureStore({
-    reducer: createReducer(),
+    reducer: createReducer({ tutorBlockReducer }),
     middleware: [...getDefaultMiddleware(), ...middlewares],
     devTools: process.env.NODE_ENV !== 'production',
     enhancers,
@@ -40,3 +41,7 @@ export function configureAppStore() {
 
   return store;
 }
+
+export type State = {
+  tutorBlockReducer: TutorBlockState;
+};
