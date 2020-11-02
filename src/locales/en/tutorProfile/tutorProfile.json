@@ -1,0 +1,9 @@
+{
+  "tutorProfile": {
+    "pageTitle": "Tutor Profile"
+  },
+  "tutorHeader": {
+    "subHead": "{{category}} tutor",
+    "follow": "Follow this tutor"
+  }
+}

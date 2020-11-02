@@ -7,6 +7,7 @@ export type User = {
   avatar?: string;
   photoURL?: string;
   shortIntro?: string;
+  videoIntro?: string;
   createdAt?: number;
   coins: number;
   level?: string;
@@ -34,6 +35,7 @@ export const mockUser: User = {
   shortIntro: 'this is a fake user',
   avatar: 'https://www.w3schools.com/w3css/img_avatar3.png',
   createdAt: 1603375420000,
+  videoIntro: 'https://www.youtube.com/watch?v=uKxyLmbOc0Q',
   level: 'Gold',
   coins: 1,
   sessions: {

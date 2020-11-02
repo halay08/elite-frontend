@@ -1,21 +1,19 @@
 import texts from './translation.json';
 import errorMessages from './errors.json';
-import recommendedBar from './tutorBlock/recommendedbar.json';
-import tutorBlock from './tutorBlock/tutorBlock.json';
-import advancedSearch from './tutorBlock/advancedSearch.json';
+import tutorBlock from './tutorBlock';
 import timeline from './timeline.json';
 import global from './global.json';
 import layout from './layout.json';
+import tutorProfile from './tutorProfile';
 
 const en = {
   ...texts,
   ...errorMessages,
-  ...recommendedBar,
   ...timeline,
   ...tutorBlock,
-  ...advancedSearch,
   ...global,
   ...layout,
+  ...tutorProfile,
 };
 
 export default en;
