@@ -7,13 +7,11 @@ import { useAuth } from 'contexts/AuthContext';
 import { ProfileTab } from 'app/components/Profile';
 import { UserService } from 'services';
 import isEmpty from 'ramda.isempty';
-import TutorBlock from 'app/components/TutorBlock/TutorBlock';
 import { Timeline } from 'app/components/Timeline';
 import { mockStudent } from 'types/Student';
 
 export function Profile() {
   const classes = useStyles();
-  const [activeTabId, setActiveTabId] = useState(0);
   const [userData, setUserData] = useState({});
   const { isLoggedIn, user } = useAuth();
 
@@ -35,23 +33,9 @@ export function Profile() {
       </Helmet>
       <Container className={classes.cardGrid} fixed>
         <Grid item xs={12} sm={12} md={12}>
-          <Tabs
-            value={activeTabId}
-            onChange={(e, id) => setActiveTabId(id)}
-            indicatorColor="primary"
-            textColor="primary"
-          >
-            <Tab label="Account" />
-            <Tab label="Profile" />
-            <Tab label="Session" />
-            <Tab label="Help" />
-          </Tabs>
-          {activeTabId === 0 && <TutorBlock /> /* For Review, Update later */}
-          {activeTabId === 1 && !isEmpty(userData) && (
+          {!isEmpty(userData) && (
             <ProfileTab _id={user.uid} userData={userData} />
           )}
-          {activeTabId === 2 && <div />}
-          {activeTabId === 3 && <div />}
         </Grid>
       </Container>
       <Timeline userData={mockStudent} />
@@ -61,7 +45,6 @@ export function Profile() {
 
 const useStyles = makeStyles(theme => ({
   cardGrid: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    padding: 0,
   },
 }));

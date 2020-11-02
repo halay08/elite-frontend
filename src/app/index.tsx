@@ -9,7 +9,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-
 import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { Login } from './containers/Login/Loadable';
@@ -19,9 +18,12 @@ import { EmailVerification } from './containers/EmailVerification/Loadable';
 import { Dashboard } from './containers/Dashboard/Loadable';
 import { ForgetPassword } from './containers/ForgetPassword/Loadable';
 import { AccountAction } from './containers/AccountAction/Loadable';
+import { RecommendedTutors } from './containers/RecommendedTutors/Loadable';
 import AppStateProvider from './twilio/state';
 import PrivateRoute from './twilio/components/PrivateRoute/PrivateRoute';
 import { VideoApp } from './twilio/';
+import RoutePath from 'config/routes';
+
 export function App() {
   return (
     <BrowserRouter>
@@ -35,22 +37,35 @@ export function App() {
       <AppStateProvider>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <ProfileRedirect exact path="/login" component={Login} />
-          <LoginRedirect exact path="/profile" component={Profile} />
+          <ProfileRedirect exact path={RoutePath.login} component={Login} />
+          <LoginRedirect
+            exact
+            path={RoutePath.dashboard}
+            component={Dashboard}
+          />
+          <LoginRedirect
+            exact
+            path={RoutePath.accountSettings}
+            component={Profile}
+          />
+          <LoginRedirect
+            exact
+            path={RoutePath.accountTutors}
+            component={RecommendedTutors}
+          />
           <Route
             exact
-            path="/email-verification"
+            path={RoutePath.emailVerification}
             component={EmailVerification}
           />
-          <LoginRedirect exact path="/dashboard" component={Dashboard} />
           <ProfileRedirect
             exact
-            path="/forgot-password"
+            path={RoutePath.forgotPassword}
             component={ForgetPassword}
           />
           <ProfileRedirect
             exact
-            path="/account-action"
+            path={RoutePath.accountAction}
             component={AccountAction}
           />
           <PrivateRoute exact path="/room">

@@ -3,7 +3,7 @@ import React from 'react';
 import { Photo as PhotoIcon } from '@material-ui/icons';
 import { translations } from 'locales/i18n';
 import { useTranslation } from 'react-i18next';
-import { UserAvatar } from '../Avatar';
+import { UserAvatar } from 'app/components/Avatar';
 import { User } from 'types/User';
 
 type AvatarUploadderProps = {

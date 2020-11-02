@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { Route, Redirect } from 'react-router-dom';
+import RoutePath from 'config/routes';
 
 const ProfileRedirect = ({ component: Component, ...rest }) => {
   const { isLoggedIn } = useAuth();
@@ -13,7 +14,10 @@ const ProfileRedirect = ({ component: Component, ...rest }) => {
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: '/profile', state: { from: props.location } }}
+            to={{
+              pathname: RoutePath.accountSettings,
+              state: { from: props.location },
+            }}
           />
         )
       }

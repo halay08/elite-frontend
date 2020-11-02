@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core';
 import tinycolor from 'tinycolor2';
 
-const primary = '#536DFE';
+const primary = '#FF6711';
 const secondary = '#FF5C93';
 const warning = '#FFC260';
 const success = '#3CD4A0';
@@ -32,7 +32,6 @@ const globalTheme = createMuiTheme({
     },
   },
   palette: {
-    // type: "dark",
     primary: {
       main: primary,
       light: tinycolor(primary).lighten(lightenRate).toHexString(),
@@ -69,6 +68,15 @@ const globalTheme = createMuiTheme({
       default: '#F6F7FF',
       light: '#F3F5FF',
       white: '#FFFFFF',
+    },
+    mainSidebar: {
+      main: '#313541',
+    },
+    mainSidebarText: {
+      main: '#B8B3B3',
+    },
+    mainSidebarTextHover: {
+      main: '#FFFFFF',
     },
   },
   customShadows: {},
@@ -161,6 +169,16 @@ export default createMuiTheme(
           '&:hover:before': {
             borderBottomColor: `${globalTheme.palette.primary.light} !important`,
           },
+        },
+      },
+      MuiAppBar: {
+        colorPrimary: {
+          backgroundColor: '#FFFFFF',
+        },
+      },
+      MuiDrawer: {
+        paper: {
+          backgroundColor: globalTheme.palette.mainSidebar.main,
         },
       },
     },

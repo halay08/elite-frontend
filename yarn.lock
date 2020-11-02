@@ -5567,6 +5567,11 @@ eslint-plugin-prettier@3.1.2:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
+eslint-plugin-react-hooks@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.0.tgz#8c229c268d468956334c943bb45fc860280f5556"
+  integrity sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ==
+
 eslint-plugin-react-hooks@^1.6.1:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-1.7.0.tgz#6210b6d5a37205f0b92858f895a4e827020a7d04"
@@ -9067,6 +9072,11 @@ material-design-lite@^1.2.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/material-design-lite/-/material-design-lite-1.3.0.tgz#d004ce3fee99a1eeb74a78b8a325134a5f1171d3"
   integrity sha1-0ATOP+6Zoe63Sni4oyUTSl8RcdM=
+
+material-ui-flags@1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/material-ui-flags/-/material-ui-flags-1.0.15.tgz#0a61b7b72d8c94c020ddb60fe66e21b421a4b1a8"
+  integrity sha512-MZzRBY6rcATs7/LhihhDav0xPUtX2ZVahRpTwf4jYBwDHZ01Erz7OlMR0/yd5cESWcOKNHbh+66SbVaHU8nLRg==
 
 material-ui-phone-number@2.2.6:
   version "2.2.6"

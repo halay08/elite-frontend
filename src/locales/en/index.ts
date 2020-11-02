@@ -5,6 +5,7 @@ import tutorBlock from './tutorBlock/tutorBlock.json';
 import advancedSearch from './tutorBlock/advancedSearch.json';
 import timeline from './timeline.json';
 import global from './global.json';
+import layout from './layout.json';
 
 const en = {
   ...texts,
@@ -14,6 +15,7 @@ const en = {
   ...tutorBlock,
   ...advancedSearch,
   ...global,
+  ...layout,
 };
 
 export default en;
