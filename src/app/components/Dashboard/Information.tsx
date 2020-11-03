@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { translations } from 'locales/i18n';
 import { Link } from 'react-router-dom';
 import { User, mockUser, initUser } from 'types/User';
-import { UserAvatar } from './UserAvatar';
+import { UserAvatar } from 'app/components/Avatar';
 import { getUserName } from 'helpers';
+import RoutePath from 'config/routes';
 
 const Information = () => {
   const classes = useStyles();
@@ -35,7 +36,7 @@ const Information = () => {
         wrap="nowrap"
       >
         <Grid item>
-          <UserAvatar user={user} />
+          <UserAvatar user={user} size={7} />
         </Grid>
         <Grid item sm container>
           <Grid item xs container direction="column" spacing={1}>
@@ -95,7 +96,7 @@ const Information = () => {
                   variant="outlined"
                   color="primary"
                   component={Link}
-                  to="/profile"
+                  to={RoutePath.accountSettings}
                   className={classes.button}
                 >
                   {translator(translatedTexts.completeProfile)}

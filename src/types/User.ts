@@ -1,9 +1,11 @@
 export type User = {
   email?: string;
-  name?: string;
   phoneNumber?: string;
+  name?: string;
   surname?: string;
+  displayName?: string;
   avatar?: string;
+  photoURL?: string;
   shortIntro?: string;
   createdAt?: number;
   coins: number;
@@ -26,12 +28,11 @@ export type SignUpUser = {
 
 export const mockUser: User = {
   email: 'mock@test.com',
-  name: 'User',
-  surname: 'Mock',
+  name: 'Khiem',
+  surname: 'Le',
   phoneNumber: '0123456789',
   shortIntro: 'this is a fake user',
-  avatar:
-    'https://lh3.googleusercontent.com/a-/AOh14GjyuVvwBsYXJ5mkY6dTG414E2Mfbk2fw9MYEyoe=s96-c',
+  avatar: 'https://www.w3schools.com/w3css/img_avatar3.png',
   createdAt: 1603375420000,
   level: 'Gold',
   coins: 1,

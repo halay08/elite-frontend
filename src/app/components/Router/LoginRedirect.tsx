@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { Route, Redirect } from 'react-router-dom';
+import { Layout } from 'app/components/Layout/Layout';
 
 const LoginRedirect = ({ component: Component, ...rest }) => {
   const { isLoggedIn } = useAuth();
@@ -10,7 +11,9 @@ const LoginRedirect = ({ component: Component, ...rest }) => {
       {...rest}
       render={props =>
         isLoggedIn ? (
-          <Component {...props} />
+          <Layout>
+            <Component {...props} />
+          </Layout>
         ) : (
           <Redirect
             to={{ pathname: '/login', state: { from: props.location } }}

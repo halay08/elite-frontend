@@ -1,0 +1,15 @@
+{
+  "sidebar": {
+    "items": {
+      "dashboard": "Dashboard",
+      "account": "Account",
+      "accountSettings": "Settings",
+      "accountTutors": "Tutors"
+    }
+  },
+  "header": {
+    "lang": "English",
+    "messange": "Messages",
+    "noti": "Notifications"
+  }
+}

@@ -1,88 +1,79 @@
 import React from 'react';
-import { Avatar, Typography } from '@material-ui/core';
+import { makeStyles, Avatar, Typography } from '@material-ui/core';
 import { Person as PersonIcon } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'react-i18next';
-import { translations } from 'locales/i18n';
+import { User } from 'types/User';
 
-type UserAvatarTypes = {
+type Props = {
+  user: User;
   size?: number;
-  user?: {
-    avatar?: string;
-    photoURL?: string;
-    name?: string;
-    surname?: string;
-    displayName?: string;
-  };
+  withBorder?: boolean;
 };
 
-const getNameInitials = user => {
+const getUserAvatarName = (user: User) => {
   const { name, surname, displayName } = user;
   if (name && surname) {
-    return name.charAt(0) + surname.charAt(0);
+    return `${name[0]}${surname[0]}`.toUpperCase();
   }
 
   if (name) {
-    return name.charAt(0);
+    return `${name[0]}`.toUpperCase();
   }
 
   if (displayName) {
-    return displayName.charAt(0);
+    return `${displayName[0]}`.toUpperCase();
   }
 
   return '';
 };
 
-export default function UserAvatar({
-  size = 14,
-  user = {},
-}: UserAvatarTypes): JSX.Element {
-  const classes = useStyles(size)();
-  const { t: translator } = useTranslation();
-  const { avatar } = translations;
+const UserAvatar = ({ user, size = 17, withBorder = true }: Props) => {
+  const classes = useStyles(size, withBorder)();
+  const { avatar = '', photoURL = '' } = user;
 
-  const url = user.photoURL || user.avatar || '';
-  if (url) {
+  if (avatar || photoURL) {
     return (
       <Avatar
         className={classes.avatar}
-        alt={translator(avatar.alt)}
-        src={url}
-      />
+        alt="user-avatar"
+        src={avatar || photoURL}
+      ></Avatar>
     );
   }
 
-  const nameInitials = getNameInitials(user);
-  if (nameInitials) {
+  const iconName = getUserAvatarName(user);
+  if (iconName) {
     return (
-      <Avatar className={classes.avatar} alt={translator(avatar.alt)}>
-        <Typography className={classes.nameInitials} variant="h2">
-          {nameInitials}
+      <Avatar className={classes.avatar}>
+        <Typography className={classes.iconName} variant="body1">
+          {iconName}
         </Typography>
       </Avatar>
     );
   }
 
   return (
-    <Avatar className={classes.avatar} alt={translator(avatar.alt)}>
-      <PersonIcon className={classes.personIcon} />
+    <Avatar className={classes.avatar}>
+      <PersonIcon className={classes.avatarIcon} />
     </Avatar>
   );
-}
+};
 
-const useStyles = size =>
+const useStyles = (size: number, withBorder: boolean) =>
   makeStyles(theme => ({
-    avatar: {
-      margin: 'auto',
+    avatar: () => ({
       width: theme.spacing(size),
       height: theme.spacing(size),
-    },
-
-    nameInitials: {
-      cursor: 'default',
-    },
-
-    personIcon: {
+      border: withBorder ? `2px solid ${theme.palette.primary.main}` : 'none',
+      backgroundColor: 'transparent',
+      color: theme.palette.primary.main,
+    }),
+    avatarIcon: {
+      color: theme.palette.primary.main,
       fontSize: theme.spacing(7),
     },
+    iconName: {
+      cursor: 'default',
+    },
   }));
+
+export default UserAvatar;

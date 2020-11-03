@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import CustomTextField from './CustomTextField';
 import Title from './Title';
-import { UserAvatar } from '../Avatar';
+import { UserAvatar } from 'app/components/Avatar';
 import { translations } from 'locales/i18n';
 import { useTranslation } from 'react-i18next';
 

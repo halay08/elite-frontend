@@ -17,7 +17,7 @@ import isEmpty from 'ramda.isempty';
 import { TutorData, recommendedTutors } from './mocks';
 import { Star as StarIcon } from '@material-ui/icons';
 import { getDisplayStars, getShortDisplayName } from 'utils/helpers/user';
-import { UserAvatar } from './UserAvatar';
+import { UserAvatar } from 'app/components/Avatar';
 
 const RecommendedTutors = () => {
   const classes = useStyles();

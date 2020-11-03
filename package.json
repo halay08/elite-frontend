@@ -37,6 +37,7 @@
     "jest-styled-components": "7.0.2",
     "linkifyjs": "2.1.9",
     "lint-staged": "10.0.8",
+    "material-ui-flags": "1.0.15",
     "material-ui-phone-number": "2.2.6",
     "nanoid": "3.1.16",
     "node-plop": "0.25.0",
