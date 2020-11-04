@@ -11,7 +11,17 @@ const lightenRate = 7.5;
 const darkenRate = 45;
 
 const globalTheme = createMuiTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 768,
+      md: 1024,
+      lg: 1440,
+      xl: 1920,
+    },
+  },
   typography: {
+    fontSize: 14,
     h1: {
       fontSize: '3rem',
     },
@@ -88,8 +98,36 @@ const globalTheme = createMuiTheme({
   mobileTopBarHeight: 52,
 });
 
+export function generateFontSize(
+  xs: string | number,
+  sm: string | number,
+  md: string | number,
+) {
+  return {
+    [globalTheme.breakpoints.down('xs')]: {
+      fontSize: xs,
+    },
+    [globalTheme.breakpoints.up('sm')]: {
+      fontSize: sm,
+    },
+    [globalTheme.breakpoints.up('md')]: {
+      fontSize: md,
+    },
+  };
+}
+
 export default createMuiTheme(
   {
+    typography: {
+      h1: generateFontSize('2rem', '2.625rem', '3.25rem'),
+      h2: generateFontSize('1.375rem', '1.825rem', '2.25rem'),
+      h3: generateFontSize('1.125rem', '1.375rem', '1.5rem'),
+      h4: generateFontSize('1rem', '1.125rem', '1.375rem'),
+      h5: generateFontSize('0.875rem', '1rem', '1.25rem'),
+      h6: generateFontSize('0.75rem', '0.938rem', '1.125rem'),
+      body2: generateFontSize('0.56rem', '0.75rem', '0.875rem'),
+      subtitle1: generateFontSize('0.44rem', '0.625rem', '0.75rem'),
+    },
     customShadows: {
       widget:
         '0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
@@ -179,6 +217,11 @@ export default createMuiTheme(
       MuiDrawer: {
         paper: {
           backgroundColor: globalTheme.palette.mainSidebar.main,
+        },
+      },
+      MuiButton: {
+        root: {
+          textTransform: 'none',
         },
       },
     },

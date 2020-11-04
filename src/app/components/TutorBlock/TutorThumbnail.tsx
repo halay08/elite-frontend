@@ -70,7 +70,7 @@ function ExpertiseBlock({ expertises }: ExpertiseBlockProps): JSX.Element {
           <Typography component="p">{expertise}</Typography>
         ))}
       </Collapse>
-      {!isEmpty(rest) ? (
+      {!isEmpty(rest) && (
         <Typography
           color="primary"
           component="span"
@@ -82,8 +82,6 @@ function ExpertiseBlock({ expertises }: ExpertiseBlockProps): JSX.Element {
               : tutorThumbnail.expertise.collapse,
           )}
         </Typography>
-      ) : (
-        <></>
       )}
     </>
   );

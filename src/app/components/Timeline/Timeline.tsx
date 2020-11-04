@@ -127,13 +127,18 @@ export default function HorizontalTimeline({ userData }): JSX.Element {
 
   return (
     <div className={classes.root}>
-      <Stepper alternativeLabel nonLinear activeStep={activeStep}>
+      <Stepper
+        alternativeLabel
+        nonLinear
+        className={classes.stepper}
+        activeStep={activeStep}
+      >
         {steps.map((label, index) => {
           const stepProps: stepProps = {};
           const buttonProps: buttonProps = {};
           if (isStepOptional(index)) {
             buttonProps.optional = (
-              <Typography variant="caption">
+              <Typography variant="subtitle1">
                 {translator(timeline.step.optional)}
               </Typography>
             );
@@ -210,5 +215,9 @@ const useStyles = makeStyles(theme => ({
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+  },
+  stepper: {
+    paddingLeft: 0,
+    paddingRight: 0,
   },
 }));

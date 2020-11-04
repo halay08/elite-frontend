@@ -15,35 +15,30 @@ export default function ToptipBanner({
   const { banner } = translations;
 
   return (
-    <Grid
-      container
-      direction="row"
-      justify="flex-start"
-      alignItems="stretch"
-      className={classes.container}
-    >
-      <Grid item xs={4} container justify="center">
+    <Grid container className={classes.container}>
+      <Grid item xs={12} sm={4} md={4} container justify="center">
         <img src={logo} alt="logo" className={classes.logo} />
       </Grid>
       <Grid
         item
-        xs={8}
+        xs={12}
+        sm={8}
+        md={8}
         container
-        direction="column"
         justify="center"
-        alignItems="flex-start"
+        alignItems="center"
       >
-        <Grid item>
+        <Grid item xs={10} sm={12} md={12}>
           <Typography variant="h2" className={classes.title}>
             {translator(banner.title)}
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={10} sm={12} md={12}>
           <Typography variant="h5" className={classes.subTitle}>
             {translator(banner.subTitle)}
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item sm={12} md={12}>
           <Button
             variant="contained"
             color="primary"
@@ -70,11 +65,12 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     textTransform: 'uppercase',
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
   title: {
     fontWeight: 400,
-    lineHeight: 2,
+    marginBottom: theme.spacing(1),
   },
   subTitle: {
     fontWeight: 100,

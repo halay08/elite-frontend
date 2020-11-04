@@ -19,15 +19,15 @@ export default function AvatarUploadder({
   return (
     <Grid
       container
-      direction="row"
       alignItems="center"
+      justify="center"
+      spacing={2}
       className={classes.container}
     >
-      <Grid item xs={2} />
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={3} md={3} container justify="center">
         <UserAvatar user={userData} />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={3} md={3} container justify="center">
         <input id="avatar-input" type="file" hidden accept="image/*" />
         <label htmlFor="avatar-input">
           <Button
