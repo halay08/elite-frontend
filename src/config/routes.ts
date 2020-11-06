@@ -18,6 +18,7 @@ class RoutePath implements IRoute {
   emailVerification = '/email-verification';
   forgotPassword = '/forgot-password';
   accountAction = '/account-action';
+  tutorProfile = '/tutor';
 }
 
 export default new RoutePath();

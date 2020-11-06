@@ -23,6 +23,7 @@ import AppStateProvider from './twilio/state';
 import PrivateRoute from './twilio/components/PrivateRoute/PrivateRoute';
 import { VideoApp } from './twilio/';
 import RoutePath from 'config/routes';
+import TutorProfile from './containers/TutorProfile';
 
 export function App() {
   return (
@@ -47,6 +48,11 @@ export function App() {
             exact
             path={RoutePath.accountSettings}
             component={Profile}
+          />
+          <LoginRedirect
+            exact
+            path={RoutePath.tutorProfile}
+            component={TutorProfile}
           />
           <LoginRedirect
             exact
