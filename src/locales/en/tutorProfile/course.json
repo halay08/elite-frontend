@@ -1,0 +1,26 @@
+{
+  "tutorCourse": {
+    "bar": {
+      "title": "Course Calendar",
+      "subTitle": "There are {{courseLength}} sessions in this course. You have to study all of them to have the best result."
+    },
+    "selector": {
+      "label": "Tutor courses: ",
+      "defaultOption": "Select a course",
+      "price": "Price: "
+    },
+    "report": "Report this course",
+    "book": "Book this course"
+  },
+  "tutorCalendar": {
+    "header": {
+      "date": "Date",
+      "day": "Day",
+      "slots": "Slots"
+    },
+    "datePicker": {
+      "value": "Week of {{date}}",
+      "label": "Select week"
+    }
+  }
+}

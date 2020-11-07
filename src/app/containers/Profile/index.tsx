@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { Helmet } from 'react-helmet-async';
-import { Grid, Tab, Tabs, Container } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Container } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { ProfileTab } from 'app/components/Profile';
@@ -11,7 +10,6 @@ import { Timeline } from 'app/components/Timeline';
 import { mockStudent } from 'types/Student';
 
 export function Profile() {
-  const classes = useStyles();
   const [userData, setUserData] = useState({});
   const { isLoggedIn, user } = useAuth();
 
@@ -31,7 +29,7 @@ export function Profile() {
         <title>Home Page</title>
         <meta name="description" content="Profile page" />
       </Helmet>
-      <Container className={classes.cardGrid} fixed>
+      <Container fixed>
         <Grid item xs={12} sm={12} md={12}>
           {!isEmpty(userData) && (
             <ProfileTab _id={user.uid} userData={userData} />
@@ -42,9 +40,3 @@ export function Profile() {
     </>
   );
 }
-
-const useStyles = makeStyles(theme => ({
-  cardGrid: {
-    padding: 0,
-  },
-}));

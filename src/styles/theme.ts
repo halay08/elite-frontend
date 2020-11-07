@@ -75,8 +75,10 @@ const globalTheme = createMuiTheme({
       hint: '#B9B9B9',
     },
     background: {
-      default: '#F6F7FF',
+      default: '#E5E5E5',
       light: '#F3F5FF',
+      dark: '#EBECED',
+      table: '#EEEEEE',
       white: '#FFFFFF',
     },
     mainSidebar: {
@@ -125,8 +127,12 @@ export default createMuiTheme(
       h4: generateFontSize('1rem', '1.125rem', '1.375rem'),
       h5: generateFontSize('0.875rem', '1rem', '1.25rem'),
       h6: generateFontSize('0.75rem', '0.938rem', '1.125rem'),
+      body1: generateFontSize('0.75rem', '0.875rem', '1rem'),
       body2: generateFontSize('0.56rem', '0.75rem', '0.875rem'),
-      subtitle1: generateFontSize('0.44rem', '0.625rem', '0.75rem'),
+      subtitle1: {
+        color: '#606060',
+        ...generateFontSize('0.75rem', '0.875rem', '1rem'),
+      },
     },
     customShadows: {
       widget:
@@ -155,6 +161,13 @@ export default createMuiTheme(
         },
       },
       MuiSelect: {
+        outlined: {
+          '&&': {
+            padding: 14,
+            paddingRight: 42,
+            backgroundColor: '#FFFFFF',
+          },
+        },
         icon: {
           color: '#B9B9B9',
         },

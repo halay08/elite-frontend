@@ -1,4 +1,5 @@
 import { User } from 'types/User';
+import { HOC, branch, renderNothing } from 'recompose';
 
 function getUserName(user: User) {
   const fullName = `${user.name || ''} ${user.surname || ''}`.trim();
@@ -6,4 +7,6 @@ function getUserName(user: User) {
   return name;
 }
 
-export { getUserName };
+const hideIfNoData = (hasNoData: HOC) => branch(hasNoData, renderNothing);
+
+export { getUserName, hideIfNoData };

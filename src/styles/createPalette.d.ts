@@ -12,6 +12,8 @@ declare module '@material-ui/core/styles/createPalette' {
   }
   interface TypeBackground {
     light?: string;
+    dark?: string;
+    table?: string;
     white?: string;
   }
 }
