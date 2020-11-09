@@ -73,7 +73,7 @@ const globalTheme = createMuiTheme({
       main: '#313541',
     },
     mainSidebarText: {
-      main: '#B8B3B3',
+      main: '#808183',
     },
     mainSidebarTextHover: {
       main: '#FFFFFF',
