@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Box } from '@material-ui/core';
 import { IconFlagUS } from 'material-ui-flags';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
@@ -13,8 +13,12 @@ const Lang = ({ children }: Props) => {
     <>
       <IconButton className={classes.headerButton}>
         <IconFlagUS />
+        {children && (
+          <Box ml={2} fontSize={16} component="span">
+            {children}
+          </Box>
+        )}
       </IconButton>
-      {children}
     </>
   );
 };

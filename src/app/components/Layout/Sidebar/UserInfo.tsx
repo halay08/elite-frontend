@@ -48,6 +48,7 @@ const UserInfo = () => {
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1),
+    backgroundColor: 'rgba(0,0,0,.08)',
   },
   name: {
     fontWeight: 500,
