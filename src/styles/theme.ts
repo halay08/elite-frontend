@@ -75,7 +75,7 @@ const globalTheme = createMuiTheme({
       hint: '#B9B9B9',
     },
     background: {
-      default: '#E5E5E5',
+      default: '#F4F7FE',
       light: '#F3F5FF',
       dark: '#EBECED',
       table: '#EEEEEE',
