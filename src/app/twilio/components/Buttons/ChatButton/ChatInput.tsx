@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, TextField } from '@material-ui/core';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
 import { useAppState } from '../../../state';
+import { IDataTrackCommunication } from '../../../types';
 
 export default function ChatInput() {
   const classes = useStyles();
@@ -23,13 +24,17 @@ export default function ChatInput() {
         ...room.localParticipant.dataTracks.values(),
       ];
 
+      const msg: IDataTrackCommunication = {
+        author: room.localParticipant.identity,
+        message: text,
+        type: 'chat',
+      };
+
       // Send the message
-      localDataTrackPublication.track.send(
-        JSON.stringify([room.localParticipant.identity, text]),
-      );
+      localDataTrackPublication.track.send(JSON.stringify(msg));
 
       // Push message to the array list of message
-      setMessage([room.localParticipant.identity, text]);
+      setMessage(msg);
       setNotificationCount(1);
 
       //Reset the text field

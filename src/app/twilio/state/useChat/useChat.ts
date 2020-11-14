@@ -1,11 +1,14 @@
 import { useState, useCallback } from 'react';
+import { IDataTrackCommunication } from '../../types';
 
 const useChat = () => {
-  const [messages, _setMessage] = useState<Array<string[]>>([]);
+  const [messages, _setMessage] = useState<
+    Array<Partial<IDataTrackCommunication>>
+  >([]);
   const [notificationCount, _setNotificationCount] = useState<number>(0);
 
   const setMessage = useCallback(
-    (msg: string[]) => {
+    (msg: Partial<IDataTrackCommunication>) => {
       _setMessage(messages => [...messages, msg]);
     },
     [_setMessage],
