@@ -109,7 +109,7 @@ function TutorBlock({
       <Grid container direction="row" spacing={3} className={classes.container}>
         {tutors.map((tutor, index) => (
           <Grow key={index} in={true} timeout={1000}>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={12} md={6} lg={4}>
               <TutorThumbnail tutor={tutor} />
             </Grid>
           </Grow>

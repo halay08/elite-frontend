@@ -24,7 +24,6 @@ export default function ProfileTab({ _id = '', userData = {} }: any) {
       direction="column"
       justify="flex-start"
       alignItems="stretch"
-      xs={6}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <ProfileDetail register={register} user={userData} />

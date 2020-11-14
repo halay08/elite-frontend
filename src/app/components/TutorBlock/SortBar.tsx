@@ -48,10 +48,10 @@ function SortBar({
       className={classes.container}
     >
       <Grid item>
-        <Typography variant="h3">{translator(sortBar.title)}</Typography>
+        <Typography variant="h4">{translator(sortBar.title)}</Typography>
       </Grid>
       <Grid item>
-        <Typography component="span" variant="body1">
+        <Typography component="span" variant="body2">
           {translator(sortBar.availability)}
         </Typography>
         <Select
@@ -67,7 +67,7 @@ function SortBar({
         </Select>
       </Grid>
       <Grid item>
-        <Typography component="span" variant="body1">
+        <Typography component="span" variant="body2">
           {translator(sortBar.reviews)}
         </Typography>
         <Select

@@ -20,10 +20,11 @@ export default function VerifyPhoneNumber(): JSX.Element {
       container
       direction="row"
       alignItems="center"
+      justify="center"
+      spacing={2}
       className={classes.container}
     >
-      <Grid item xs={3} />
-      <Grid container item xs={4} direction="row" alignItems="center">
+      <Grid container item xs={12} sm={5} md={5} alignItems="center">
         <PhoneIcon />
         <MuiPhoneNumber
           name="phone"
@@ -33,7 +34,7 @@ export default function VerifyPhoneNumber(): JSX.Element {
           onChange={handleChange}
         />
       </Grid>
-      <Grid item xs={5}>
+      <Grid item xs={12} sm={4} md={4}>
         <Button color="primary" component="span" variant="contained">
           {translator(timeline.verifyPhone.sendCode)}
         </Button>

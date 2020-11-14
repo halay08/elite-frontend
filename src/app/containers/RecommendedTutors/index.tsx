@@ -1,9 +1,8 @@
 /* eslint-disable */
-import { Helmet } from 'react-helmet-async';
-import { Grid, Tab, Tabs, Container } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import TutorBlock from 'app/components/TutorBlock/TutorBlock';
+import { TutorBlock } from 'app/components/TutorBlock';
 
 export function RecommendedTutors() {
   const classes = useStyles();

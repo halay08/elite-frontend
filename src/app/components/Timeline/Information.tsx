@@ -22,15 +22,8 @@ export default function UpdateInformation({ userData }): JSX.Element {
 
   return (
     <>
-      <Grid container className={classes.container} direction="row">
-        <Grid
-          item
-          xs={1}
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
+      <Grid container className={classes.container}>
+        <Grid item xs={1} container justify="center" alignItems="center">
           <AccountBalanceIcon />
         </Grid>
         <Grid item xs={6} className={classes.item}>
@@ -43,7 +36,7 @@ export default function UpdateInformation({ userData }): JSX.Element {
             placeholder={profile.about.study.placeholder}
           />
         </Grid>
-        <Grid item xs={5} className={classes.item}>
+        <Grid item xs={6} sm={5} md={5} className={classes.item}>
           <CustomTextField
             name="studyPlace"
             inputRef={register({
@@ -54,15 +47,8 @@ export default function UpdateInformation({ userData }): JSX.Element {
           />
         </Grid>
       </Grid>
-      <Grid container className={classes.container} direction="row">
-        <Grid
-          item
-          xs={1}
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
+      <Grid container className={classes.container}>
+        <Grid item xs={1} container justify="center" alignItems="center">
           <WorkIcon />
         </Grid>
         <Grid item xs={6} className={classes.item}>
@@ -75,7 +61,7 @@ export default function UpdateInformation({ userData }): JSX.Element {
             placeholder={profile.about.work.placeholder}
           />
         </Grid>
-        <Grid item xs={5} className={classes.item}>
+        <Grid item xs={6} sm={5} md={5} className={classes.item}>
           <CustomTextField
             name="jobPlace"
             inputRef={register({
@@ -93,6 +79,11 @@ export default function UpdateInformation({ userData }): JSX.Element {
 const useStyles = makeStyles(theme => ({
   container: {
     marginBottom: theme.spacing(4),
+    '& > div:first-of-type': {
+      [theme.breakpoints.down('xs')]: {
+        display: 'none',
+      },
+    },
   },
   item: {
     paddingLeft: theme.spacing(1),

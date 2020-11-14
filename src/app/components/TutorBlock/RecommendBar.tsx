@@ -30,23 +30,19 @@ function RecommendBar({
   };
 
   return (
-    <Grid
-      container
-      direction="row"
-      justify="flex-start"
-      alignItems="stretch"
-      className={classes.container}
-    >
+    <Grid container spacing={2} className={classes.container}>
       <Grid
         item
-        xs={6}
+        xs={12}
+        sm={6}
+        md={6}
         container
         direction="column"
         justify="flex-start"
         alignItems="flex-start"
       >
         <Grid item>
-          <Typography variant="h2">
+          <Typography variant="h3">
             {translator(text.title, { available: tutors.length })}
           </Typography>
         </Grid>
@@ -60,11 +56,13 @@ function RecommendBar({
       </Grid>
       <Grid
         item
-        xs={6}
+        xs={12}
+        sm={6}
+        md={6}
         container
-        direction="row"
         justify="space-around"
         alignItems="center"
+        spacing={2}
       >
         <Grid item>
           <Button
