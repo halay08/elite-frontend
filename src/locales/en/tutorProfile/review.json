@@ -1,0 +1,21 @@
+{
+  "tutorReview": {
+    "title": "Course Reviews by Students",
+    "subTitle": "See what other students said about this course",
+    "summary": {
+      "happy": "happy users",
+      "punctual": "punctual",
+      "organized": "organized",
+      "engaging": "engaging"
+    },
+    "sort": {
+      "label": "Sort by ",
+      "options": {
+        "recent": "Most recent",
+        "punctual": "punctual",
+        "organized": "organized",
+        "engaging": "engaging"
+      }
+    }
+  }
+}
