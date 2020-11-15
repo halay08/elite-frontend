@@ -13,6 +13,7 @@ import ToggleAudioButton from '../Buttons/ToggleAudioButton/ToggleAudioButton';
 import ToggleVideoButton from '../Buttons/ToggleVideoButton/ToggleVideoButton';
 import ToggleScreenShareButton from '../Buttons/ToogleScreenShareButton/ToggleScreenShareButton';
 import ChatDrawerButton from '../Buttons/ChatButton/ChatDrawerButton';
+import ToggleLiveCaptionButton from '../Buttons/ToggleLiveCaptionButton/ToggleLiveCaptionButton';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -93,6 +94,7 @@ export default function MenuBar() {
             <Grid container justify="center">
               <ToggleAudioButton disabled={isReconnecting} />
               <ToggleVideoButton disabled={isReconnecting} />
+              <ToggleLiveCaptionButton disabled={isReconnecting} />
               <Hidden smDown>
                 {!isSharingScreen && (
                   <ToggleScreenShareButton disabled={isReconnecting} />

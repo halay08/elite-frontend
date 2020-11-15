@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer, useState } from 'react';
-import { RoomType } from '../types';
+import { RoomType, IDataTrackCommunication } from '../types';
 import { TwilioError } from 'twilio-video';
 import {
   settingsReducer,
@@ -10,7 +10,8 @@ import {
 import useActiveSinkId from './useActiveSinkId/useActiveSinkId';
 import useFirebaseAuth from './useFirebaseAuth/useFirebaseAuth';
 import usePasscodeAuth from './usePasscodeAuth/usePasscodeAuth';
-import useChat from './useChat/useChat';
+import useChat from './useChat';
+import useCaption from './useCaption';
 import { User } from 'firebase';
 
 export interface StateContextType {
@@ -27,10 +28,14 @@ export interface StateContextType {
   isFetching: boolean;
   activeSinkId: string;
   setActiveSinkId(sinkId: string): void;
-  messages: Array<string[]>;
-  setMessage(message: string[]): void;
+  messages: Array<Partial<IDataTrackCommunication>>;
+  setMessage(message: Partial<IDataTrackCommunication>): void;
   notificationCount: number;
   setNotificationCount(count: number): void;
+  caption: Array<Partial<IDataTrackCommunication>>;
+  setCaption(message: Partial<IDataTrackCommunication>): void;
+  toggleCaption: boolean;
+  setToggleCaption(state: boolean): void;
   settings: Settings;
   dispatchSetting: React.Dispatch<SettingsAction>;
   roomType?: RoomType;
@@ -57,6 +62,7 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     notificationCount,
     setNotificationCount,
   ] = useChat();
+  const [caption, setCaption, toggleCaption, setToggleCaption] = useCaption();
   const [settings, dispatchSetting] = useReducer(
     settingsReducer,
     initialSettings,
@@ -70,6 +76,10 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     setActiveSinkId,
     messages,
     setMessage,
+    caption,
+    setCaption,
+    toggleCaption,
+    setToggleCaption,
     notificationCount,
     setNotificationCount,
     settings,
@@ -92,6 +102,7 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
       getToken: async (identity, roomName) => {
         const headers = new window.Headers();
         const endpoint = `${process.env.REACT_APP_API_ORIGIN}/call/token`;
+        // const endpoint = `https://asia-east2-elites-work-staging.cloudfunctions.net/api/v1/call/token`;
         // const params = new window.URLSearchParams({ identity, roomName });
 
         return fetch(`${endpoint}/${identity}/${roomName}`, {

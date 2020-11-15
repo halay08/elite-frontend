@@ -9,13 +9,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import ChatInput from './ChatInput';
 import { useAppState } from '../../../state';
+import { IDataTrackCommunication } from '../../../types';
 
-const formatText = (message: string[]) => {
-  const [author, msg] = message;
+const formatText = (msg: Partial<IDataTrackCommunication>) => {
+  const { author, message } = msg;
 
   return (
     <span>
-      <b>{author}</b>: <Linkify>{msg}</Linkify>
+      <b>{author}</b>: <Linkify>{message}</Linkify>
     </span>
   );
 };

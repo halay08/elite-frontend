@@ -51,7 +51,7 @@ describe('the useFirebaseAuth hook', () => {
   });
 
   it('should include the users idToken in request to the video token server', async () => {
-    process.env.REACT_APP_TOKEN_ENDPOINT = 'http://test-endpoint.com/token';
+    process.env.REACT_APP_API_ORIGIN = 'http://test-endpoint.com/token';
     const { result, waitForNextUpdate } = renderHook(() => useFirebaseAuth());
     await waitForNextUpdate();
     result.current.signIn();
