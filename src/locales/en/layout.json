@@ -12,5 +12,13 @@
     "messange": "Messages",
     "noti": "Notifications",
     "viewAll": "View all"
+  },
+  "bigCalendar": {
+    "today": "Today",
+    "start": "Start",
+    "end": "End",
+    "filter": "Filter",
+    "coming": "Coming sessions",
+    "completed": "Completed sessions"
   }
 }

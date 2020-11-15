@@ -24,6 +24,7 @@ import PrivateRoute from './twilio/components/PrivateRoute/PrivateRoute';
 import { VideoApp } from './twilio/';
 import RoutePath from 'config/routes';
 import TutorProfile from './containers/TutorProfile';
+import { Calendar } from './containers/Calendar';
 
 export function App() {
   return (
@@ -64,6 +65,7 @@ export function App() {
             path={RoutePath.emailVerification}
             component={EmailVerification}
           />
+          <LoginRedirect exact path="/calendar" component={Calendar} />
           <ProfileRedirect
             exact
             path={RoutePath.forgotPassword}
