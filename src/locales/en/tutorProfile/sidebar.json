@@ -1,0 +1,26 @@
+{
+  "tutorSidebar": {
+    "experiences": {
+      "title": "Experiences",
+      "since": "Tutor since: ",
+      "country": "Country/Nationality: ",
+      "certified": "Certified: ",
+      "category": "Category: ",
+      "hour": "Hour on EliteWork: ",
+      "lession": {
+        "completed": "Lession completed: ",
+        "missed": "Lession missed: "
+      },
+      "happy": "Happy students: "
+    },
+    "expertises": {
+      "title": "Expertises",
+      "subTitle": "High level of knowledge skill",
+      "work": "Work",
+      "education": "Education"
+    },
+    "about": {
+      "title": "About me"
+    }
+  }
+}

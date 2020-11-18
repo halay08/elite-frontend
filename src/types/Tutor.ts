@@ -111,7 +111,20 @@ export const mockTutor = {
   category: {
     name: 'Information Technology',
   },
-  educations: [],
+  educations: [
+    {
+      start_date: new Date('2019/1/1'),
+      end_date: new Date('2020/1/1'),
+      is_present_learning: false,
+      school_name: 'DUE',
+    },
+    {
+      start_date: new Date('2020/1/1'),
+      end_date: new Date(),
+      is_present_learning: true,
+      school_name: 'Elite',
+    },
+  ],
   expertises: [
     {
       name: 'IOS',
