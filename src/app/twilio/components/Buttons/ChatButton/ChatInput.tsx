@@ -10,7 +10,7 @@ export default function ChatInput() {
 
   const [text, setText] = useState('');
   const { room } = useVideoContext();
-  const { setMessage, setNotificationCount } = useAppState();
+  const { setMessage } = useAppState();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setText(e.target.value);
@@ -35,7 +35,6 @@ export default function ChatInput() {
 
       // Push message to the array list of message
       setMessage(msg);
-      setNotificationCount(1);
 
       //Reset the text field
       setText('');

@@ -102,7 +102,6 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
       getToken: async (identity, roomName) => {
         const headers = new window.Headers();
         const endpoint = `${process.env.REACT_APP_API_ORIGIN}/call/token`;
-        // const endpoint = `https://asia-east2-elites-work-staging.cloudfunctions.net/api/v1/call/token`;
         // const params = new window.URLSearchParams({ identity, roomName });
 
         return fetch(`${endpoint}/${identity}/${roomName}`, {
