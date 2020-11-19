@@ -85,10 +85,10 @@ const globalTheme = createMuiTheme({
       main: '#313541',
     },
     mainSidebarText: {
-      main: '#808183',
+      main: '#FFFFFF',
     },
     mainSidebarTextHover: {
-      main: '#FFFFFF',
+      main: primary,
     },
   },
   customShadows: {},

@@ -3,6 +3,7 @@ import { CssBaseline } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
+import { Breadcrumbs } from './Breadcrumbs';
 
 interface Props {
   children?: JSX.Element;
@@ -19,6 +20,7 @@ const Layout = (props: Props) => {
       <Sidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <Breadcrumbs />
         {props.children}
       </main>
     </div>

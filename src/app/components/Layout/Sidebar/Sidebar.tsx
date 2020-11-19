@@ -198,6 +198,8 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     sidebarItemRoot: {
+      color: theme.palette.mainSidebarText.main,
+
       '&:hover, &:focus, &.MuiListItem-root.Mui-selected': {
         color: theme.palette.mainSidebarTextHover.main,
         backgroundColor: 'transparent !important',

@@ -27,10 +27,7 @@ const Messages = ({ children }: Props) => {
 
   return (
     <>
-      <IconButton
-        className={classes.headerButton}
-        onClick={event => toggle(event.currentTarget)}
-      >
+      <IconButton onClick={event => toggle(event.currentTarget)}>
         <Badge badgeContent={newMessages} color="secondary">
           <SmsIcon />
         </Badge>

@@ -1,4 +1,4 @@
-import RoutePath from 'config/routes';
+import { UniversalRouteConfig, StudentRouteConfig } from 'config/routes';
 
 type Item = { itemKey: string; link: string };
 
@@ -11,16 +11,29 @@ const items: SidebarItem[] = [
   {
     itemKey: 'dashboard',
     icon: 'dashboard',
-    link: RoutePath.dashboard,
+    link: UniversalRouteConfig.dashboard,
+    subItems: [],
+  },
+  {
+    itemKey: 'tutors',
+    icon: 'supervised_user_circle',
+    link: '/tutors',
+    subItems: [
+      { itemKey: 'tutorsList', link: UniversalRouteConfig.tutor.list },
+    ],
+  },
+  {
+    itemKey: 'calendar',
+    icon: 'event',
+    link: UniversalRouteConfig.calendar,
     subItems: [],
   },
   {
     itemKey: 'account',
-    icon: 'account_box',
-    link: '/account',
+    icon: 'account_circle',
+    link: '/me',
     subItems: [
-      { itemKey: 'accountSettings', link: RoutePath.accountSettings },
-      { itemKey: 'accountTutors', link: RoutePath.accountTutors },
+      { itemKey: 'accountSettings', link: StudentRouteConfig.account.setting },
     ],
   },
 ];

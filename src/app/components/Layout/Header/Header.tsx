@@ -89,11 +89,7 @@ const Header = (props: Props) => {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Hidden smUp implementation="css">
-            <IconButton
-              className={classes.headerButton}
-              edge="start"
-              onClick={handleDrawerToggle}
-            >
+            <IconButton edge="start" onClick={handleDrawerToggle}>
               <MenuIcon />
             </IconButton>
           </Hidden>
@@ -112,7 +108,6 @@ const Header = (props: Props) => {
               aria-haspopup="true"
               aria-controls={mobileHeaderId}
               onClick={handleMobileMenuOpen}
-              className={classes.headerButton}
             >
               <MoreIcon />
             </IconButton>
@@ -144,9 +139,6 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'flex',
         alignItems: 'center',
       },
-    },
-    headerButton: {
-      color: theme.palette.mainSidebarText.main,
     },
     sectionMobile: {
       display: 'flex',

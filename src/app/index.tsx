@@ -14,7 +14,6 @@ import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { Login } from './containers/Login/Loadable';
 import { ProfileRedirect, LoginRedirect } from './components/Router';
 import { Profile } from './containers/Profile/Loadable';
-import { EmailVerification } from './containers/EmailVerification/Loadable';
 import { Dashboard } from './containers/Dashboard/Loadable';
 import { ForgetPassword } from './containers/ForgetPassword/Loadable';
 import { AccountAction } from './containers/AccountAction/Loadable';
@@ -22,9 +21,9 @@ import { RecommendedTutors } from './containers/RecommendedTutors/Loadable';
 import AppStateProvider from './twilio/state';
 import PrivateRoute from './twilio/components/PrivateRoute/PrivateRoute';
 import { VideoApp } from './twilio/';
-import RoutePath from 'config/routes';
 import TutorProfile from './containers/TutorProfile';
 import { Calendar } from './containers/Calendar';
+import { UniversalRouteConfig, StudentRouteConfig } from '../config/routes';
 
 export function App() {
   return (
@@ -39,41 +38,44 @@ export function App() {
       <AppStateProvider>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <ProfileRedirect exact path={RoutePath.login} component={Login} />
+          <ProfileRedirect
+            exact
+            path={UniversalRouteConfig.login}
+            component={Login}
+          />
           <LoginRedirect
             exact
-            path={RoutePath.dashboard}
+            path={UniversalRouteConfig.dashboard}
             component={Dashboard}
           />
           <LoginRedirect
             exact
-            path={RoutePath.accountSettings}
+            path={StudentRouteConfig.account.setting}
             component={Profile}
           />
           <LoginRedirect
             exact
-            path={RoutePath.tutorProfile}
+            path={UniversalRouteConfig.tutor.profile}
             component={TutorProfile}
           />
           <LoginRedirect
             exact
-            path={RoutePath.accountTutors}
+            path={UniversalRouteConfig.tutor.list}
             component={RecommendedTutors}
           />
-          <Route
+          <LoginRedirect
             exact
-            path={RoutePath.emailVerification}
-            component={EmailVerification}
+            path={UniversalRouteConfig.calendar}
+            component={Calendar}
           />
-          <LoginRedirect exact path="/calendar" component={Calendar} />
           <ProfileRedirect
             exact
-            path={RoutePath.forgotPassword}
+            path={UniversalRouteConfig.forgotPassword}
             component={ForgetPassword}
           />
           <ProfileRedirect
             exact
-            path={RoutePath.accountAction}
+            path={UniversalRouteConfig.accountAction}
             component={AccountAction}
           />
           <PrivateRoute exact path="/room">
