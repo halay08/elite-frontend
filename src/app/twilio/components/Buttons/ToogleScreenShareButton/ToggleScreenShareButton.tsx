@@ -1,19 +1,15 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
 import Button from '@material-ui/core/Button';
 import ScreenShareIcon from '../../../icons/ScreenShareIcon';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import useScreenShareParticipant from '../../../hooks/useScreenShareParticipant/useScreenShareParticipant';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
-
-export const SCREEN_SHARE_TEXT = 'Share Screen';
-export const STOP_SCREEN_SHARE_TEXT = 'Stop Sharing Screen';
-export const SHARE_IN_PROGRESS_TEXT =
-  'Cannot share screen when another user is sharing';
-export const SHARE_NOT_SUPPORTED_TEXT =
-  'Screen sharing is not supported with this browser';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,12 +37,15 @@ export default function ToggleScreenShareButton(props: { disabled?: boolean }) {
 
   let tooltipMessage = '';
 
+  const { t: translator } = useTranslation();
+  const { button: t } = translations.room;
+
   if (disableScreenShareButton) {
-    tooltipMessage = SHARE_IN_PROGRESS_TEXT;
+    tooltipMessage = translator(t.screenShare.shareInProgress);
   }
 
   if (!isScreenShareSupported) {
-    tooltipMessage = SHARE_NOT_SUPPORTED_TEXT;
+    tooltipMessage = translator(t.screenShare.shareNotSupport);
   }
 
   return (
@@ -66,7 +65,7 @@ export default function ToggleScreenShareButton(props: { disabled?: boolean }) {
           startIcon={<ScreenShareIcon />}
           data-cy-share-screen
         >
-          {SCREEN_SHARE_TEXT}
+          {translator(t.screenShare.screenShareButton)}
         </Button>
       </span>
     </Tooltip>

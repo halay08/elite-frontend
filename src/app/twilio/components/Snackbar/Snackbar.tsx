@@ -14,40 +14,6 @@ interface SnackbarProps {
   handleClose?: () => void;
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    display: 'flex',
-    alignItems: 'baseline',
-    justifyContent: 'space-between',
-    width: '400px',
-    minHeight: '50px',
-    background: 'white',
-    padding: '1em',
-    borderRadius: '3px',
-    boxShadow: '0 12px 24px 4px rgba(40,42,43,0.2)',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-    },
-  },
-  contentContainer: {
-    display: 'flex',
-  },
-  iconContainer: {
-    display: 'flex',
-    padding: '0 1.3em 0 0.3em',
-    transform: 'translateY(4px)',
-  },
-  headline: {
-    fontWeight: 'bold',
-  },
-  error: {
-    borderLeft: '4px solid #D61F1F',
-  },
-  warning: {
-    borderLeft: '4px solid #E46216',
-  },
-}));
-
 export default function Snackbar({
   headline,
   message,
@@ -118,3 +84,37 @@ export default function Snackbar({
     </MUISnackbar>
   );
 }
+
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'space-between',
+    width: '400px',
+    minHeight: '50px',
+    background: 'white',
+    padding: '1em',
+    borderRadius: '3px',
+    boxShadow: '0 12px 24px 4px rgba(40,42,43,0.2)',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
+  },
+  contentContainer: {
+    display: 'flex',
+  },
+  iconContainer: {
+    display: 'flex',
+    padding: '0 1.3em 0 0.3em',
+    transform: 'translateY(4px)',
+  },
+  headline: {
+    fontWeight: 'bold',
+  },
+  error: {
+    borderLeft: '4px solid #D61F1F',
+  },
+  warning: {
+    borderLeft: '4px solid #E46216',
+  },
+}));

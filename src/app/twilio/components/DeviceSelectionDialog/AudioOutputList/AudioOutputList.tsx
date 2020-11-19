@@ -1,9 +1,15 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
 import { FormControl, MenuItem, Typography, Select } from '@material-ui/core';
 import { useAppState } from '../../../state';
 import { useAudioOutputDevices } from '../../../hooks/deviceHooks/deviceHooks';
 
 export default function AudioOutputList() {
+  const { t: translator } = useTranslation();
+  const { audio: t } = translations.room;
+
   const audioOutputDevices = useAudioOutputDevices();
   const { activeSinkId, setActiveSinkId } = useAppState();
   const activeOutputLabel = audioOutputDevices.find(
@@ -15,7 +21,7 @@ export default function AudioOutputList() {
       {audioOutputDevices.length > 1 ? (
         <FormControl fullWidth>
           <Typography variant="subtitle2" gutterBottom>
-            Audio Output
+            {translator(t.audioOutput)}
           </Typography>
           <Select
             onChange={e => setActiveSinkId(e.target.value as string)}
@@ -31,9 +37,11 @@ export default function AudioOutputList() {
         </FormControl>
       ) : (
         <>
-          <Typography variant="subtitle2">Audio Output</Typography>
+          <Typography variant="subtitle2">
+            {translator(t.audioOutput)}
+          </Typography>
           <Typography>
-            {activeOutputLabel || 'System Default Audio Output'}
+            {activeOutputLabel || translator(t.defaultAudioOutput)}
           </Typography>
         </>
       )}

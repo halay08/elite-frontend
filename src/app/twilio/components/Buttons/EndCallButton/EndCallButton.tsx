@@ -1,8 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-
 import { Button } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
 
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
 
@@ -22,13 +23,16 @@ export default function EndCallButton(props: { className?: string }) {
   const classes = useStyles();
   const { room } = useVideoContext();
 
+  const { t: translator } = useTranslation();
+  const { button: t } = translations.room;
+
   return (
     <Button
       onClick={() => room.disconnect()}
       className={clsx(classes.button, props.className)}
       data-cy-disconnect
     >
-      Disconnect
+      {translator(t.disconnect)}
     </Button>
   );
 }

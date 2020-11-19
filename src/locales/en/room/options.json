@@ -1,0 +1,57 @@
+{
+  "connectionOptions": {
+    "connectionSettings": "Connection Settings",
+    "settingsCannotChange": "These settings cannot be changed when connected to a room.",
+    "dominantSpeaker": " Dominant Speaker Priority",
+    "dominantSpeakerOptions": {
+      "low": "Low",
+      "standard": "Standard",
+      "high": "High",
+      "default": "Server Default"
+    },
+    "trackSwitchOffMode": "Track Switch Off Mode",
+    "trackSwitchOffModeOptions": {
+      "predicted": "Predicted",
+      "detected": "Detected",
+      "disabled": "Disabled",
+      "default": "Server Default"
+    },
+    "bandwidthProfileMode": "Mode",
+    "bandwidthProfileModeOptions": {
+      "grid": "Grid",
+      "collaboration": "Collaboration",
+      "presentation": "Presentation",
+      "default": "Server Default"
+    },
+    "maxTracks": "Max Tracks",
+    "maxAudioBitrate": "Max Audio Bitrate",
+    "leaveBlank": "Leave blank for no limit",
+    "renderDimensionLow": "Render Dimension (Low Priority)",
+    "renderDimensionStandard": "Render Dimension (Standard Priority)",
+    "renderDimensionHigh": "Render Dimension (High Priority)",
+    "doneButton": "Done"
+  },
+  "audio": {
+    "audio": "Audio",
+    "audioInput": "Audio Input",
+    "noLocalAudio": "No Local Audio",
+    "audioOutput": "Audio Output",
+    "defaultAudioOutput": "System Default Audio Output"
+  },
+  "video": {
+    "video": "Video",
+    "videoInput": "Video Input",
+    "noLocalVideo": "No Local Video"
+  },
+  "menu": {
+    "about": "About",
+    "settings": "Settings",
+    "audioVideoSettings": "Audio and Video Settings",
+    "sharingScreen": "You are sharing your screen",
+    "stopSharing": "Stop Sharing"
+  },
+  "participant": {
+    "isReconnecting": "Participant is reconnecting",
+    "isConnected": "Participant is connected"
+  }
+}

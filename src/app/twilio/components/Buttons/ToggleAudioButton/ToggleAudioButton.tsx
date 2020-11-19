@@ -1,6 +1,9 @@
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
 import MicIcon from '../../../icons/MicIcon';
 import MicOffIcon from '../../../icons/MicOffIcon';
 
@@ -15,6 +18,9 @@ export default function ToggleAudioButton(props: {
   const { localTracks } = useVideoContext();
   const hasAudioTrack = localTracks.some(track => track.kind === 'audio');
 
+  const { t: translator } = useTranslation();
+  const { button: b } = translations.room;
+
   return (
     <Button
       className={props.className}
@@ -23,7 +29,11 @@ export default function ToggleAudioButton(props: {
       startIcon={isAudioEnabled ? <MicIcon /> : <MicOffIcon />}
       data-cy-audio-toggle
     >
-      {!hasAudioTrack ? 'No Audio' : isAudioEnabled ? 'Mute' : 'Unmute'}
+      {!hasAudioTrack
+        ? translator(b.audio.noAudio)
+        : isAudioEnabled
+        ? translator(b.audio.mute)
+        : translator(b.audio.unMute)}
     </Button>
   );
 }

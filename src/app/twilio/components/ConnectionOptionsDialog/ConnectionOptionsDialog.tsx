@@ -16,6 +16,9 @@ import {
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
 import { inputLabels, Settings } from '../../state/settings/settingsReducer';
 import { RenderDimensions } from '../../state/settings/renderDimensions';
 import { useAppState } from '../../state';
@@ -73,6 +76,9 @@ export default function ConnectionOptionsDialog({
   const roomState = useRoomState();
   const isDisabled = roomState !== 'disconnected';
 
+  const { t: translator } = useTranslation();
+  const { connectionOptions: t } = translations.room;
+
   const handleChange = useCallback(
     (e: React.ChangeEvent<{ value: unknown; name?: string }>) => {
       dispatchSetting({
@@ -92,20 +98,20 @@ export default function ConnectionOptionsDialog({
 
   return (
     <Dialog open={open} onClose={onClose} classes={{ paper: classes.paper }}>
-      <DialogTitle>Connection Settings</DialogTitle>
+      <DialogTitle>{translator(t.connectionSettings)}</DialogTitle>
       <Divider />
       <DialogContent className={classes.container}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography hidden={!isDisabled} variant="body2">
-              These settings cannot be changed when connected to a room.
+              {translator(t.settingsCannotChange)}
             </Typography>
           </Grid>
 
           <Grid item sm={6} xs={12}>
             <FormControl className={classes.formControl}>
               <InputLabel id={inputLabels.dominantSpeakerPriority}>
-                Dominant Speaker Priority:
+                {translator(t.dominantSpeaker)}:
               </InputLabel>
               <Select
                 fullWidth
@@ -115,16 +121,24 @@ export default function ConnectionOptionsDialog({
                 value={withDefault(settings.dominantSpeakerPriority)}
                 onChange={handleChange}
               >
-                <MenuItem value="low">Low</MenuItem>
-                <MenuItem value="standard">Standard</MenuItem>
-                <MenuItem value="high">High</MenuItem>
-                <MenuItem value="default">Server Default</MenuItem>
+                <MenuItem value="low">
+                  {translator(t.dominantSpeakerOptions.low)}
+                </MenuItem>
+                <MenuItem value="standard">
+                  {translator(t.dominantSpeakerOptions.standard)}
+                </MenuItem>
+                <MenuItem value="high">
+                  {translator(t.dominantSpeakerOptions.high)}
+                </MenuItem>
+                <MenuItem value="default">
+                  {translator(t.dominantSpeakerOptions.default)}
+                </MenuItem>
               </Select>
             </FormControl>
 
             <FormControl className={classes.formControl}>
               <InputLabel id={inputLabels.trackSwitchOffMode}>
-                Track Switch Off Mode:
+                {translator(t.trackSwitchOffMode)}:
               </InputLabel>
               <Select
                 fullWidth
@@ -134,16 +148,24 @@ export default function ConnectionOptionsDialog({
                 value={withDefault(settings.trackSwitchOffMode)}
                 onChange={handleChange}
               >
-                <MenuItem value="predicted">Predicted</MenuItem>
-                <MenuItem value="detected">Detected</MenuItem>
-                <MenuItem value="disabled">Disabled</MenuItem>
-                <MenuItem value="default">Server Default</MenuItem>
+                <MenuItem value="predicted">
+                  {translator(t.trackSwitchOffModeOptions.predicted)}
+                </MenuItem>
+                <MenuItem value="detected">
+                  {translator(t.trackSwitchOffModeOptions.detected)}
+                </MenuItem>
+                <MenuItem value="disabled">
+                  {translator(t.trackSwitchOffModeOptions.disabled)}
+                </MenuItem>
+                <MenuItem value="default">
+                  {translator(t.trackSwitchOffModeOptions.default)}
+                </MenuItem>
               </Select>
             </FormControl>
 
             <FormControl className={classes.formControl}>
               <InputLabel id={inputLabels.bandwidthProfileMode}>
-                Mode:
+                {translator(t.bandwidthProfileMode)}:
               </InputLabel>
               <Select
                 fullWidth
@@ -153,10 +175,18 @@ export default function ConnectionOptionsDialog({
                 value={withDefault(settings.bandwidthProfileMode)}
                 onChange={handleChange}
               >
-                <MenuItem value="grid">Grid</MenuItem>
-                <MenuItem value="collaboration">Collaboration</MenuItem>
-                <MenuItem value="presentation">Presentation</MenuItem>
-                <MenuItem value="default">Server Default</MenuItem>
+                <MenuItem value="grid">
+                  {translator(t.bandwidthProfileModeOptions.grid)}
+                </MenuItem>
+                <MenuItem value="collaboration">
+                  {translator(t.bandwidthProfileModeOptions.collaboration)}
+                </MenuItem>
+                <MenuItem value="presentation">
+                  {translator(t.bandwidthProfileModeOptions.presentation)}
+                </MenuItem>
+                <MenuItem value="default">
+                  {translator(t.bandwidthProfileModeOptions.default)}
+                </MenuItem>
               </Select>
             </FormControl>
 
@@ -165,8 +195,8 @@ export default function ConnectionOptionsDialog({
                 disabled={isDisabled}
                 fullWidth
                 id={inputLabels.maxTracks}
-                label="Max Tracks"
-                placeholder="Leave blank for no limit"
+                label={translator(t.maxTracks)}
+                placeholder={translator(t.leaveBlank)}
                 name={inputLabels.maxTracks}
                 value={withDefault(settings.maxTracks)}
                 onChange={handleNumberChange}
@@ -178,8 +208,8 @@ export default function ConnectionOptionsDialog({
                 disabled={isDisabled}
                 fullWidth
                 id={inputLabels.maxAudioBitrate}
-                label="Max Audio Bitrate"
-                placeholder="Leave blank for no limit"
+                label={translator(t.maxAudioBitrate)}
+                placeholder={translator(t.leaveBlank)}
                 name={inputLabels.maxAudioBitrate}
                 value={withDefault(settings.maxAudioBitrate)}
                 onChange={handleNumberChange}
@@ -192,7 +222,7 @@ export default function ConnectionOptionsDialog({
                 id={inputLabels.renderDimensionLow}
                 className={classes.label}
               >
-                Render Dimension (Low Priority):
+                {translator(t.renderDimensionLow)}:
               </InputLabel>
               <Select
                 fullWidth
@@ -211,7 +241,7 @@ export default function ConnectionOptionsDialog({
                 id={inputLabels.renderDimensionStandard}
                 className={classes.label}
               >
-                Render Dimension (Standard Priority):
+                {translator(t.renderDimensionStandard)}:
               </InputLabel>
               <Select
                 fullWidth
@@ -230,7 +260,7 @@ export default function ConnectionOptionsDialog({
                 id={inputLabels.renderDimensionHigh}
                 className={classes.label}
               >
-                Render Dimension (High Priority):
+                {translator(t.renderDimensionHigh)}:
               </InputLabel>
               <Select
                 fullWidth
@@ -254,7 +284,7 @@ export default function ConnectionOptionsDialog({
           variant="contained"
           onClick={onClose}
         >
-          Done
+          {translator(t.doneButton)}
         </Button>
       </DialogActions>
     </Dialog>

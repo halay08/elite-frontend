@@ -8,6 +8,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Divider from '@material-ui/core/Divider';
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
 
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
 import Video from 'twilio-video';
 import { useAppState } from '../../state';
 
@@ -20,23 +23,30 @@ function AboutDialog({ open, onClose }: PropsWithChildren<AboutDialogProps>) {
   const { roomType } = useAppState();
   const { room } = useVideoContext();
 
+  const { t: translator } = useTranslation();
+  const { about: t } = translations.room;
+
   return (
     <Dialog open={open} onClose={onClose} fullWidth={true} maxWidth="xs">
-      <DialogTitle>About</DialogTitle>
+      <DialogTitle>{translator(t.title)}</DialogTitle>
       <Divider />
       <DialogContent>
-        <DialogContentText>Room name: {room.name}</DialogContentText>
         <DialogContentText>
-          Browser supported: {String(Video.isSupported)}
+          {translator(t.roomName)}: {room.name}
+        </DialogContentText>
+        <DialogContentText>
+          {translator(t.browserSupported)}: {String(Video.isSupported)}
         </DialogContentText>
         {roomType && (
-          <DialogContentText>Room Type: {roomType}</DialogContentText>
+          <DialogContentText>
+            {translator(t.roomType)}: {roomType}
+          </DialogContentText>
         )}
       </DialogContent>
       <Divider />
       <DialogActions>
         <Button onClick={onClose} color="primary" variant="contained" autoFocus>
-          OK
+          {translator(t.OK)}
         </Button>
       </DialogActions>
     </Dialog>

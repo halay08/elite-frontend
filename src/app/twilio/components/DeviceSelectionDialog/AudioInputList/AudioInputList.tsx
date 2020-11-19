@@ -8,12 +8,18 @@ import {
   Select,
   Grid,
 } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
 import { SELECTED_AUDIO_INPUT_KEY } from '../../../constants';
 import { useAudioInputDevices } from '../../../hooks/deviceHooks/deviceHooks';
 import useMediaStreamTrack from '../../../hooks/useMediaStreamTrack/useMediaStreamTrack';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
 
 export default function AudioInputList() {
+  const { t: translator } = useTranslation();
+  const { audio: t } = translations.room;
+
   const audioInputDevices = useAudioInputDevices();
   const { localTracks } = useVideoContext();
 
@@ -31,7 +37,7 @@ export default function AudioInputList() {
   return (
     <div>
       <Typography variant="subtitle2" gutterBottom>
-        Audio Input
+        {translator(t.audioInput)}
       </Typography>
       <Grid container alignItems="center" justify="space-between">
         <div className="inputSelect">
@@ -51,7 +57,8 @@ export default function AudioInputList() {
             </FormControl>
           ) : (
             <Typography>
-              {localAudioTrack?.mediaStreamTrack.label || 'No Local Audio'}
+              {localAudioTrack?.mediaStreamTrack.label ||
+                translator(t.noLocalAudio)}
             </Typography>
           )}
         </div>

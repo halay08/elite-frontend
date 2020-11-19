@@ -1,4 +1,7 @@
 import React, { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
 import AboutDialog from '../../AboutDialog/AboutDialog';
 import Button from '@material-ui/core/Button';
 import DeviceSelectionDialog from '../../DeviceSelectionDialog/DeviceSelectionDialog';
@@ -10,6 +13,9 @@ import Typography from '@material-ui/core/Typography';
 import { Theme, useMediaQuery } from '@material-ui/core';
 
 export default function Menu(props: { buttonClassName?: string }) {
+  const { t: translator } = useTranslation();
+  const { menu: m } = translations.room;
+
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm'),
   );
@@ -30,7 +36,7 @@ export default function Menu(props: { buttonClassName?: string }) {
           <MoreIcon />
         ) : (
           <>
-            Settings
+            {translator(m.settings)}
             <ExpandMoreIcon />
           </>
         )}
@@ -49,10 +55,12 @@ export default function Menu(props: { buttonClassName?: string }) {
         }}
       >
         <MenuItem onClick={() => setAboutOpen(true)}>
-          <Typography variant="body1">About</Typography>
+          <Typography variant="body1">{translator(m.about)}</Typography>
         </MenuItem>
         <MenuItem onClick={() => setSettingsOpen(true)}>
-          <Typography variant="body1">Audio and Video Settings</Typography>
+          <Typography variant="body1">
+            {translator(m.audioVideoSettings)}
+          </Typography>
         </MenuItem>
       </MenuContainer>
       <AboutDialog

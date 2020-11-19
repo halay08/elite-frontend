@@ -7,6 +7,9 @@
  */
 
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { HomePage } from './containers/HomePage/Loadable';
@@ -26,13 +29,14 @@ import { Calendar } from './containers/Calendar';
 import { UniversalRouteConfig, StudentRouteConfig } from '../config/routes';
 
 export function App() {
+  const { t: translator } = useTranslation();
+  const { metadata: m } = translations.room;
+
+  const title = `%s - ${translator(m.title)}`;
   return (
     <BrowserRouter>
-      <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
-      >
-        <meta name="description" content="A React Boilerplate application" />
+      <Helmet titleTemplate={title} defaultTitle={translator(m.title)}>
+        <meta name="description" content={translator(m.description)} />
       </Helmet>
 
       <AppStateProvider>

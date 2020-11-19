@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
 
 import AudioInputList from './AudioInputList/AudioInputList';
 import AudioOutputList from './AudioOutputList/AudioOutputList';
@@ -14,6 +16,54 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import VideoInputList from './VideoInputList/VideoInputList';
+
+export default function DeviceSelectionDialog({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
+  const classes = useStyles();
+  const { t: translator } = useTranslation();
+  const { video: v, audio: a, connectionOptions: c } = translations.room;
+
+  return (
+    <Dialog open={open} onClose={onClose} classes={{ paper: classes.paper }}>
+      <DialogTitle>Audio and Video Settings</DialogTitle>
+      <Divider />
+      <DialogContent className={classes.container}>
+        <div className={classes.listSection}>
+          <Typography variant="h6" className={classes.headline}>
+            {translator(v.video)}
+          </Typography>
+          <VideoInputList />
+        </div>
+        <Divider />
+        <div className={classes.listSection}>
+          <Typography variant="h6" className={classes.headline}>
+            {translator(a.audio)}
+          </Typography>
+          <AudioInputList />
+        </div>
+        <div className={classes.listSection}>
+          <AudioOutputList />
+        </div>
+      </DialogContent>
+      <Divider />
+      <DialogActions>
+        <Button
+          color="primary"
+          variant="contained"
+          className={classes.button}
+          onClick={onClose}
+        >
+          {translator(c.doneButton)}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -45,49 +95,3 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
 }));
-
-export default function DeviceSelectionDialog({
-  open,
-  onClose,
-}: {
-  open: boolean;
-  onClose: () => void;
-}) {
-  const classes = useStyles();
-
-  return (
-    <Dialog open={open} onClose={onClose} classes={{ paper: classes.paper }}>
-      <DialogTitle>Audio and Video Settings</DialogTitle>
-      <Divider />
-      <DialogContent className={classes.container}>
-        <div className={classes.listSection}>
-          <Typography variant="h6" className={classes.headline}>
-            Video
-          </Typography>
-          <VideoInputList />
-        </div>
-        <Divider />
-        <div className={classes.listSection}>
-          <Typography variant="h6" className={classes.headline}>
-            Audio
-          </Typography>
-          <AudioInputList />
-        </div>
-        <div className={classes.listSection}>
-          <AudioOutputList />
-        </div>
-      </DialogContent>
-      <Divider />
-      <DialogActions>
-        <Button
-          color="primary"
-          variant="contained"
-          className={classes.button}
-          onClick={onClose}
-        >
-          Done
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
-}

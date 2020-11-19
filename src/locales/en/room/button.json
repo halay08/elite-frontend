@@ -1,0 +1,25 @@
+{
+  "button": {
+    "disconnect": "Disconnect",
+    "video": {
+      "noVideo": "No Video",
+      "stop": "Stop Video",
+      "start": "Start Video"
+    },
+    "audio": {
+      "noAudio": "No Audio",
+      "mute": "Mute",
+      "unMute": "Unmute"
+    },
+    "screenShare": {
+      "shareInProgress": "Cannot share screen when another user is sharing",
+      "stopSharing": "Stop Sharing Screen",
+      "screenShareButton": "Share Screen",
+      "shareNotSupport": "Screen sharing is not supported with this browser"
+    },
+    "caption": {
+      "buttonText": "Caption",
+      "alert": "You must be connected to a peer who using Chrome browser to use Live Caption"
+    }
+  }
+}
