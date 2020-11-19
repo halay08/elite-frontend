@@ -43,13 +43,14 @@ const Calendar = props => {
 
   const handleLangChange = event => {
     const value = event.target.value;
-    moment.locale(value);
     setLang(value);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSession((event.target as HTMLInputElement).value);
   };
+
+  moment.locale(lang);
 
   return (
     <>
