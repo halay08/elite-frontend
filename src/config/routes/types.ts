@@ -28,6 +28,8 @@ export declare namespace routeConfig {
   };
 
   type IStudentAccount = {
+    main: string;
+
     setting: string;
 
     profile: string;

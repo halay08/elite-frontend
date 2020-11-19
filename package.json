@@ -51,6 +51,7 @@
     "prettier": "2.0.1",
     "ramda.isempty": "0.26.1",
     "ramda.path": "0.26.1",
+    "ramda.pathor": "0.26.1",
     "react": "16.13.0",
     "react-app-polyfill": "1.0.6",
     "react-big-calendar": "0.28.6",

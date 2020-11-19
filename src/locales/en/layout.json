@@ -1,10 +1,13 @@
 {
   "sidebar": {
     "items": {
+      "home": "Home",
       "dashboard": "Dashboard",
+      "tutors": "Tutors",
+      "tutorsList": "List",
+      "calendar": "Calendar",
       "account": "Account",
-      "accountSettings": "Settings",
-      "accountTutors": "Tutors"
+      "accountSettings": "Settings"
     }
   },
   "header": {

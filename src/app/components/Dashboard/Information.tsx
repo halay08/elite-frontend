@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { User, mockUser, initUser } from 'types/User';
 import { UserAvatar } from 'app/components/Avatar';
 import { getUserName } from 'helpers';
-import RoutePath from 'config/routes';
+import { StudentRouteConfig } from 'config/routes';
 
 const Information = () => {
   const classes = useStyles();
@@ -96,7 +96,7 @@ const Information = () => {
                   variant="outlined"
                   color="primary"
                   component={Link}
-                  to={RoutePath.accountSettings}
+                  to={StudentRouteConfig.account.setting}
                   className={classes.button}
                 >
                   {translator(translatedTexts.completeProfile)}

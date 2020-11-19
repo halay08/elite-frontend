@@ -2,7 +2,8 @@ import { routeConfig } from './types';
 
 class StudentRouteConfig implements routeConfig.IStudent {
   account = {
-    setting: '/me/setting',
+    main: '/me',
+    setting: '/me/settings',
     profile: '/me/profile',
     session: '/me/session',
     help: '/me/help',

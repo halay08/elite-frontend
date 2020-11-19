@@ -34,10 +34,7 @@ const Notifications = ({ children }: Props) => {
 
   return (
     <>
-      <IconButton
-        className={classes.headerButton}
-        onClick={event => toggle(event.currentTarget)}
-      >
+      <IconButton onClick={event => toggle(event.currentTarget)}>
         <Badge badgeContent={newNotifications} color="secondary">
           <NotificationsActiveIcon />
         </Badge>
@@ -106,9 +103,6 @@ interface StyleProps {
 export const useStyles = ({ smHeight, xlHeight }: StyleProps) =>
   makeStyles((theme: Theme) =>
     createStyles({
-      headerButton: {
-        color: theme.palette.mainSidebarText.main,
-      },
       crPopover: {
         '& .MuiPopover-paper': {
           width: 260,

@@ -2,7 +2,7 @@ import { routeConfig } from './types';
 
 class UniversalRouteConfig implements routeConfig.IUniversal {
   forgotPassword = '/forgot-password';
-  accountAction = '/account/action';
+  accountAction = '/account-action';
   home = '/';
   login = '/login';
   logout = '/logout';
