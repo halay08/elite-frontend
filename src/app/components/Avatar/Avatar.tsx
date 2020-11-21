@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Avatar, Typography } from '@material-ui/core';
+import { makeStyles, Avatar, Typography, Badge } from '@material-ui/core';
 import { Person as PersonIcon } from '@material-ui/icons';
 import { User } from 'types/User';
 
@@ -7,6 +7,7 @@ type Props = {
   user: User;
   size?: number;
   withBorder?: boolean;
+  icon?: JSX.Element | undefined;
 };
 
 const getUserAvatarName = (user: User) => {
@@ -26,35 +27,63 @@ const getUserAvatarName = (user: User) => {
   return '';
 };
 
-const UserAvatar = ({ user, size = 17, withBorder = true }: Props) => {
+type BadgeAvatarType = {
+  children: JSX.Element;
+  icon: JSX.Element | undefined;
+};
+function BadgeAvatar({ children, icon }: BadgeAvatarType): JSX.Element {
+  if (!icon) {
+    return children;
+  }
+
+  return (
+    <Badge
+      overlap="circle"
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      badgeContent={icon}
+    >
+      {children}
+    </Badge>
+  );
+}
+const UserAvatar = ({ user, size = 17, withBorder = true, icon }: Props) => {
   const classes = useStyles(size, withBorder)();
   const { avatar = '', photoURL = '' } = user;
 
   if (avatar || photoURL) {
     return (
-      <Avatar
-        className={classes.avatar}
-        alt="user-avatar"
-        src={avatar || photoURL}
-      ></Avatar>
+      <BadgeAvatar icon={icon}>
+        <Avatar
+          className={classes.avatar}
+          alt="user-avatar"
+          src={avatar || photoURL}
+        ></Avatar>
+      </BadgeAvatar>
     );
   }
 
   const iconName = getUserAvatarName(user);
   if (iconName) {
     return (
-      <Avatar className={classes.avatar}>
-        <Typography className={classes.iconName} variant="body1">
-          {iconName}
-        </Typography>
-      </Avatar>
+      <BadgeAvatar icon={icon}>
+        <Avatar className={classes.avatar}>
+          <Typography className={classes.iconName} variant="body1">
+            {iconName}
+          </Typography>
+        </Avatar>
+      </BadgeAvatar>
     );
   }
 
   return (
-    <Avatar className={classes.avatar}>
-      <PersonIcon className={classes.avatarIcon} />
-    </Avatar>
+    <BadgeAvatar icon={icon}>
+      <Avatar className={classes.avatar}>
+        <PersonIcon className={classes.avatarIcon} />
+      </Avatar>
+    </BadgeAvatar>
   );
 };
 

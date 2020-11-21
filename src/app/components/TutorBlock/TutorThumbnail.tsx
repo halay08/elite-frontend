@@ -165,7 +165,7 @@ export default function TutorThumbnail({
 const useStyle = makeStyles(theme => ({
   root: {},
   header: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.dark,
   },
   media: {
     backgroundSize: 'contain',

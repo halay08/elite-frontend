@@ -14,15 +14,7 @@ function HeaderBar({ title, subTitle, Icon }: HeaderBarType): JSX.Element {
       <Grid item className={classes.icon}>
         {Icon}
       </Grid>
-      <Grid
-        item
-        xs={8}
-        sm={10}
-        md={10}
-        container
-        direction="row"
-        alignItems="center"
-      >
+      <Grid item xs={8} sm={10} md={10} container direction="column">
         <Typography component="h3" variant="h3">
           {title}
         </Typography>

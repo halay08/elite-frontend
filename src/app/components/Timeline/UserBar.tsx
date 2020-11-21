@@ -48,7 +48,7 @@ export default function UserBar({ userData }: userBarProps): JSX.Element {
 const useStyles = makeStyles(theme => ({
   container: {
     padding: theme.spacing(2),
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.dark,
   },
   infomation: {
     marginLeft: theme.spacing(2),
