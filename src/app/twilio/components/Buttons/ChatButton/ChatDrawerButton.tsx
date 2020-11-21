@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import ChatIcon from '@material-ui/icons/CommentOutlined';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -8,6 +9,7 @@ import ChatContent from './ChatContent';
 import { useAppState } from '../../../state';
 
 export default function ChatDrawerButton() {
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const { notificationCount, setNotificationCount } = useAppState();
 
@@ -36,14 +38,33 @@ export default function ChatDrawerButton() {
           vertical: 'top',
           horizontal: 'right',
         }}
+        className={classes.customBadge}
       >
-        <Button onClick={toggleDrawer(true)} startIcon={<ChatIcon />}>
-          Chat
+        <Button size="small" onClick={toggleDrawer(true)}>
+          <ChatIcon fontSize="small" />
         </Button>
       </Badge>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      <Drawer
+        className={classes.customDrawer}
+        open={open}
+        onClose={toggleDrawer(false)}
+      >
         <ChatContent />
       </Drawer>
     </React.Fragment>
   );
 }
+
+const useStyles = makeStyles(theme => ({
+  customBadge: {
+    '& > .MuiBadge-badge': {
+      right: '20px',
+      top: '4px',
+    },
+  },
+  customDrawer: {
+    '& > .MuiDrawer-paper': {
+      background: '#e4e6ed',
+    },
+  },
+}));

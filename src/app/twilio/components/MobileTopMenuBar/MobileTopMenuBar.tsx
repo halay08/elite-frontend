@@ -1,8 +1,31 @@
-import { Grid, makeStyles, Theme, Typography } from '@material-ui/core';
 import React from 'react';
+import { Grid, makeStyles, Theme, Typography } from '@material-ui/core';
+
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
 import EndCallButton from '../Buttons/EndCallButton/EndCallButton';
 import Menu from '../MenuBar/Menu/Menu';
+import ChatDrawerButton from '../Buttons/ChatButton/ChatDrawerButton';
+
+export default function MobileTopMenuBar() {
+  const classes = useStyles();
+  const { room } = useVideoContext();
+
+  return (
+    <Grid
+      container
+      alignItems="center"
+      justify="space-between"
+      className={classes.container}
+    >
+      <Typography variant="subtitle1">{room.name}</Typography>
+      <div>
+        <EndCallButton className={classes.endCallButton} />
+        <ChatDrawerButton />
+        <Menu buttonClassName={classes.settingsButton} />
+      </div>
+    </Grid>
+  );
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -29,23 +52,3 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
 }));
-
-export default function MobileTopMenuBar() {
-  const classes = useStyles();
-  const { room } = useVideoContext();
-
-  return (
-    <Grid
-      container
-      alignItems="center"
-      justify="space-between"
-      className={classes.container}
-    >
-      <Typography variant="subtitle1">{room.name}</Typography>
-      <div>
-        <EndCallButton className={classes.endCallButton} />
-        <Menu buttonClassName={classes.settingsButton} />
-      </div>
-    </Grid>
-  );
-}

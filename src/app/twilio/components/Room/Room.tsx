@@ -1,7 +1,10 @@
 import React from 'react';
-import ParticipantList from '../ParticipantList/ParticipantList';
+import { useEventEmitter } from 'ahooks';
 import { styled } from '@material-ui/core/styles';
+
+import ParticipantList from '../ParticipantList/ParticipantList';
 import MainParticipant from '../MainParticipant/MainParticipant';
+import TopMenu from '../TopMenu/TopMenu';
 
 const Container = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -16,10 +19,13 @@ const Container = styled('div')(({ theme }) => ({
 }));
 
 export default function Room() {
+  const showParticipantList$ = useEventEmitter();
+
   return (
     <Container>
+      <TopMenu showParticipantList$={showParticipantList$} />
       <MainParticipant />
-      <ParticipantList />
+      <ParticipantList show$={showParticipantList$} />
     </Container>
   );
 }

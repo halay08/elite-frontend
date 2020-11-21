@@ -12,7 +12,7 @@ import { Typography, Grid, Hidden } from '@material-ui/core';
 import ToggleAudioButton from '../Buttons/ToggleAudioButton/ToggleAudioButton';
 import ToggleVideoButton from '../Buttons/ToggleVideoButton/ToggleVideoButton';
 import ToggleScreenShareButton from '../Buttons/ToogleScreenShareButton/ToggleScreenShareButton';
-import ChatDrawerButton from '../Buttons/ChatButton/ChatDrawerButton';
+import LectureButton from '../Buttons/LectureButton/LectureButton';
 import ToggleLiveCaptionButton from '../Buttons/ToggleLiveCaptionButton/ToggleLiveCaptionButton';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -87,7 +87,7 @@ export default function MenuBar() {
         <Grid container justify="space-around" alignItems="center">
           <Hidden smDown>
             <Grid style={{ flex: 1 }}>
-              <ChatDrawerButton />
+              <LectureButton />
             </Grid>
           </Hidden>
           <Grid item>
