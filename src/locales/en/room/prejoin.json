@@ -1,0 +1,19 @@
+{
+  "prejoinScreen": {
+    "yourName": "Your Name",
+    "roomName": "Room Name",
+    "join": "Join a Room",
+    "continue": "Continue",
+    "enterTheRoomName": "Enter the name of a room you'd like to join.",
+    "enterTheRoomNameLikeToJoin": "Enter your name and the name of a room you'd like to join",
+    "connectionLost": "Connection Lost:",
+    "reconnecting": "Reconnecting to room...",
+    "unsupportedBrowserWarning": {
+      "heading": "Browser or context not supported",
+      "openOneOf": "Please open this application in one of the",
+      "supportedBrowsers": "supported browsers",
+      "ifUsingSupportedBrowser": "If you are using a supported browser, please ensure that this app is served over a",
+      "secureContext": "secure context"
+    }
+  }
+}

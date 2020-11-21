@@ -1,4 +1,7 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
+
 import {
   DEFAULT_VIDEO_CONSTRAINTS,
   SELECTED_VIDEO_INPUT_KEY,
@@ -27,6 +30,9 @@ export default function VideoInputList() {
   const videoInputDevices = useVideoInputDevices();
   const { localTracks } = useVideoContext();
 
+  const { t: translator } = useTranslation();
+  const { video: t } = translations.room;
+
   const localVideoTrack = localTracks.find(
     track => track.kind === 'video',
   ) as LocalVideoTrack;
@@ -51,7 +57,7 @@ export default function VideoInputList() {
       {videoInputDevices.length > 1 ? (
         <FormControl fullWidth>
           <Typography variant="subtitle2" gutterBottom>
-            Video Input
+            {translator(t.videoInput)}
           </Typography>
           <Select
             onChange={e => replaceTrack(e.target.value as string)}
@@ -68,10 +74,11 @@ export default function VideoInputList() {
       ) : (
         <>
           <Typography variant="subtitle2" gutterBottom>
-            Video Input
+            {translator(t.videoInput)}
           </Typography>
           <Typography>
-            {localVideoTrack?.mediaStreamTrack.label || 'No Local Video'}
+            {localVideoTrack?.mediaStreamTrack.label ||
+              translator(t.noLocalVideo)}
           </Typography>
         </>
       )}

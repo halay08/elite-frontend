@@ -1,4 +1,6 @@
 import React, { useCallback, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
 
 import Button from '@material-ui/core/Button';
 import VideoOffIcon from '../../../icons/VideoOffIcon';
@@ -15,6 +17,9 @@ export default function ToggleVideoButton(props: {
   const lastClickTimeRef = useRef(0);
   const hasVideoDevices = useHasVideoInputDevices();
 
+  const { t: translator } = useTranslation();
+  const { button: t } = translations.room;
+
   const toggleVideo = useCallback(() => {
     if (Date.now() - lastClickTimeRef.current > 500) {
       lastClickTimeRef.current = Date.now();
@@ -30,10 +35,10 @@ export default function ToggleVideoButton(props: {
       startIcon={isVideoEnabled ? <VideoOnIcon /> : <VideoOffIcon />}
     >
       {!hasVideoDevices
-        ? 'No Video'
+        ? translator(t.video.noVideo)
         : isVideoEnabled
-        ? 'Stop Video'
-        : 'Start Video'}
+        ? translator(t.video.stop)
+        : translator(t.video.start)}
     </Button>
   );
 }

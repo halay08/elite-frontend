@@ -5,6 +5,7 @@ import timeline from './timeline.json';
 import global from './global.json';
 import layout from './layout.json';
 import tutorProfile from './tutorProfile';
+import room from './room';
 
 const en = {
   ...texts,
@@ -14,6 +15,7 @@ const en = {
   ...global,
   ...layout,
   ...tutorProfile,
+  ...room,
 };
 
 export default en;

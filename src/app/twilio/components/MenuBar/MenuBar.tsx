@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
@@ -14,6 +16,64 @@ import ToggleVideoButton from '../Buttons/ToggleVideoButton/ToggleVideoButton';
 import ToggleScreenShareButton from '../Buttons/ToogleScreenShareButton/ToggleScreenShareButton';
 import LectureButton from '../Buttons/LectureButton/LectureButton';
 import ToggleLiveCaptionButton from '../Buttons/ToggleLiveCaptionButton/ToggleLiveCaptionButton';
+
+export default function MenuBar() {
+  const classes = useStyles();
+  const { isSharingScreen, toggleScreenShare } = useVideoContext();
+  const roomState = useRoomState();
+  const isReconnecting = roomState === 'reconnecting';
+
+  const { t: translator } = useTranslation();
+  const { menu: m } = translations.room;
+
+  return (
+    <>
+      {isSharingScreen && (
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          className={classes.screenShareBanner}
+        >
+          <Typography variant="h6">{translator(m.sharingScreen)}</Typography>
+          <Button onClick={() => toggleScreenShare()}>
+            {translator(m.stopSharing)}
+          </Button>
+        </Grid>
+      )}
+      <footer className={classes.container}>
+        <Grid container justify="space-around" alignItems="center">
+          <Hidden smDown>
+            <Grid style={{ flex: 1 }}>
+              <LectureButton />
+            </Grid>
+          </Hidden>
+          <Grid item>
+            <Grid container justify="center">
+              <ToggleAudioButton disabled={isReconnecting} />
+              <ToggleVideoButton disabled={isReconnecting} />
+              <ToggleLiveCaptionButton disabled={isReconnecting} />
+              <Hidden smDown>
+                {!isSharingScreen && (
+                  <ToggleScreenShareButton disabled={isReconnecting} />
+                )}
+              </Hidden>
+              <FlipCameraButton />
+            </Grid>
+          </Grid>
+          <Hidden smDown>
+            <Grid style={{ flex: 1 }}>
+              <Grid container justify="flex-end">
+                <Menu />
+                <EndCallButton />
+              </Grid>
+            </Grid>
+          </Hidden>
+        </Grid>
+      </footer>
+    </>
+  );
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -63,56 +123,3 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-
-export default function MenuBar() {
-  const classes = useStyles();
-  const { isSharingScreen, toggleScreenShare } = useVideoContext();
-  const roomState = useRoomState();
-  const isReconnecting = roomState === 'reconnecting';
-
-  return (
-    <>
-      {isSharingScreen && (
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          className={classes.screenShareBanner}
-        >
-          <Typography variant="h6">You are sharing your screen</Typography>
-          <Button onClick={() => toggleScreenShare()}>Stop Sharing</Button>
-        </Grid>
-      )}
-      <footer className={classes.container}>
-        <Grid container justify="space-around" alignItems="center">
-          <Hidden smDown>
-            <Grid style={{ flex: 1 }}>
-              <LectureButton />
-            </Grid>
-          </Hidden>
-          <Grid item>
-            <Grid container justify="center">
-              <ToggleAudioButton disabled={isReconnecting} />
-              <ToggleVideoButton disabled={isReconnecting} />
-              <ToggleLiveCaptionButton disabled={isReconnecting} />
-              <Hidden smDown>
-                {!isSharingScreen && (
-                  <ToggleScreenShareButton disabled={isReconnecting} />
-                )}
-              </Hidden>
-              <FlipCameraButton />
-            </Grid>
-          </Grid>
-          <Hidden smDown>
-            <Grid style={{ flex: 1 }}>
-              <Grid container justify="flex-end">
-                <Menu />
-                <EndCallButton />
-              </Grid>
-            </Grid>
-          </Hidden>
-        </Grid>
-      </footer>
-    </>
-  );
-}

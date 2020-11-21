@@ -2,14 +2,16 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import useScreenShareParticipant from '../../../hooks/useScreenShareParticipant/useScreenShareParticipant';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
-
-import ToggleScreenShareButton, {
-  SCREEN_SHARE_TEXT,
-  SHARE_IN_PROGRESS_TEXT,
-  SHARE_NOT_SUPPORTED_TEXT,
-} from './ToggleScreenShareButton';
 import ScreenShareIcon from '../../../icons/ScreenShareIcon';
 import { Button, Tooltip } from '@material-ui/core';
+import ToggleScreenShareButton from './ToggleScreenShareButton';
+
+const SCREEN_SHARE_TEXT = 'Share Screen';
+const STOP_SCREEN_SHARE_TEXT = 'Stop Sharing Screen';
+const SHARE_IN_PROGRESS_TEXT =
+  'Cannot share screen when another user is sharing';
+const SHARE_NOT_SUPPORTED_TEXT =
+  'Screen sharing is not supported with this browser';
 
 jest.mock('../../../hooks/useScreenShareParticipant/useScreenShareParticipant');
 jest.mock('../../../hooks/useVideoContext/useVideoContext');

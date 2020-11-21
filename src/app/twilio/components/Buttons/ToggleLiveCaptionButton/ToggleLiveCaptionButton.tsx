@@ -4,6 +4,8 @@ import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { useToggle, useUpdateEffect, useUnmount } from 'ahooks';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { useTranslation } from 'react-i18next';
+import { translations } from 'locales/i18n';
 
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
 import CaptionOffIcon from '../../../icons/CaptionOffIcon';
@@ -26,6 +28,9 @@ function ToggleLiveCaptionButton(props: {
   const [showAlert, { toggle: setShowAlert }] = useToggle(false);
   const [activeCaption, { toggle: toggleActiveCaption }] = useToggle(false);
   const { toggleCaption } = useAppState();
+
+  const { t: translator } = useTranslation();
+  const { button: t } = translations.room;
 
   const [localDataTrackPublication] = [
     ...room.localParticipant.dataTracks.values(),
@@ -80,8 +85,7 @@ function ToggleLiveCaptionButton(props: {
         onClose={() => setShowAlert(false)}
       >
         <Alert onClose={() => setShowAlert(false)} severity="error">
-          You must be connected to a peer who using Chrome browser to use Live
-          Caption.
+          {translator(t.caption.alert)}
         </Alert>
       </Snackbar>
       <Button
@@ -90,7 +94,7 @@ function ToggleLiveCaptionButton(props: {
         disabled={props.disabled}
         startIcon={activeCaption ? <CaptionOnIcon /> : <CaptionOffIcon />}
       >
-        {'Caption'}
+        {translator(t.caption.buttonText)}
       </Button>
       {activeCaption && <PopupCaption />}
     </>
