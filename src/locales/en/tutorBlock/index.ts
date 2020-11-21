@@ -1,9 +1,11 @@
-import recommendedBar from './recommendedbar.json';
+import headerBar from './headerBar.json';
 import tutorBlock from './tutorBlock.json';
-import advancedSearch from './advancedSearch.json';
+import filterBar from './filterBar.json';
+import videoPopup from './videoPopup.json';
 
 export default {
-  ...recommendedBar,
+  ...headerBar,
   ...tutorBlock,
-  ...advancedSearch,
+  ...filterBar,
+  ...videoPopup,
 };

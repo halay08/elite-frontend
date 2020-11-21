@@ -15,9 +15,9 @@ const globalTheme = createMuiTheme({
     values: {
       xs: 0,
       sm: 768,
-      md: 1024,
-      lg: 1440,
-      xl: 1920,
+      md: 1124,
+      lg: 1480,
+      xl: 1600,
     },
   },
   typography: {
@@ -79,6 +79,7 @@ const globalTheme = createMuiTheme({
       light: '#F3F5FF',
       dark: '#EBECED',
       table: '#EEEEEE',
+      border: '#CCCCCC',
       white: '#FFFFFF',
     },
     mainSidebar: {
@@ -235,6 +236,16 @@ export default createMuiTheme(
       MuiButton: {
         root: {
           textTransform: 'none',
+        },
+      },
+      MuiContainer: {
+        maxWidthLg: {
+          [globalTheme.breakpoints.up('lg')]: {
+            maxWidth: 1124,
+          },
+          [globalTheme.breakpoints.up('xl')]: {
+            maxWidth: 1366,
+          },
         },
       },
     },

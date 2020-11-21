@@ -1,0 +1,7 @@
+{
+  "availableBar": {
+    "title": "There are {{available}} tutors available",
+    "subTitle": "Showing {{from}} - {{to}} tutors of {{available}} tutors",
+    "search": "Search"
+  }
+}
