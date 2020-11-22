@@ -1,6 +1,6 @@
 import { STORAGE_TOKEN } from 'config/constants';
 
-const { REACT_APP_API_ORIGIN } = process.env;
+const { REACT_APP_TWILIO_TOKEN_ENDPOINT } = process.env;
 
 type IRequestOptions = {
   payload?: object;
@@ -17,7 +17,7 @@ class BaseService {
   baseUrl: string;
 
   public constructor(prefix) {
-    this.baseUrl = `${REACT_APP_API_ORIGIN}/${prefix}` || '';
+    this.baseUrl = `${REACT_APP_TWILIO_TOKEN_ENDPOINT}/${prefix}` || '';
   }
 
   protected prepare(method: string, url: string, option: IRequestOptions = {}) {

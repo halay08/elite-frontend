@@ -101,10 +101,11 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
       ...contextValue,
       getToken: async (identity, roomName) => {
         const headers = new window.Headers();
-        const endpoint = `${process.env.REACT_APP_API_ORIGIN}/call/token`;
-        // const params = new window.URLSearchParams({ identity, roomName });
+        const endpoint =
+          process.env.REACT_APP_TWILIO_TOKEN_ENDPOINT || '/token';
+        const params = new window.URLSearchParams({ identity, roomName });
 
-        return fetch(`${endpoint}/${identity}/${roomName}`, {
+        return fetch(`${endpoint}?${params}`, {
           headers,
         }).then(res => res.json());
       },

@@ -43,8 +43,8 @@ describe('the useAppState hook', () => {
     );
   });
 
-  it('should get a token using the REACT_APP_API_ORIGIN environment variable when avaiable', async () => {
-    process.env.REACT_APP_API_ORIGIN = 'http://test.com/api/token';
+  it('should get a token using the REACT_APP_TWILIO_TOKEN_ENDPOINT environment variable when avaiable', async () => {
+    process.env.REACT_APP_TWILIO_TOKEN_ENDPOINT = 'http://test.com/api/token';
 
     const { result } = renderHook(useAppState, { wrapper });
 
