@@ -26,8 +26,8 @@ function Expertises({ tutor }: ExpertisesType): JSX.Element {
   const classes = useStyles();
   const { t: translator } = useTranslation();
   const { expertises } = translations.tutorSidebar;
-  const [workCollapse, { toggle: toggleWork }] = useToggle();
-  const [educationCollapse, { toggle: toggleEducation }] = useToggle();
+  const [workCollapse, { toggle: toggleWork }] = useToggle(true);
+  const [educationCollapse, { toggle: toggleEducation }] = useToggle(true);
 
   const educationContent = useMemo(
     () =>

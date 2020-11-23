@@ -1,0 +1,33 @@
+{
+  "coursePolicies": {
+    "title": "Course Policies",
+    "subTitle": "See the policies of what this tutor defined for refunds and cancellations",
+    "table": {
+      "policies": "Policies",
+      "allow": "Allow",
+      "notAllow": "Not allow"
+    },
+    "policies": {
+      "freeFirstCourse": {
+        "name": "Free first session for trial"
+      },
+      "cancelBeforeStarting": {
+        "name": "Cancel the course before it starts",
+        "condition": "Only cancel course before the {{condition}} session starts"
+      },
+      "cancelInProgress": {
+        "name": "Cancel the course while it's in progress",
+        "condition": "Only cancel course before the {{condition}} session starts"
+      },
+      "cancelSessionBeforeStarting": {
+        "name": "Cancel the session before the course starts",
+        "condition": "Only cancel session after {{condition}} session starts"
+      },
+      "cancelSessionInProgress": {
+        "name": "Cancel the session while the course is in progress",
+        "condition": "Only cancel session after {{condition}} session starts"
+      },
+      "refund": "Refund fees: {{refund}}%"
+    }
+  }
+}
