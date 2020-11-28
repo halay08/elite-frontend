@@ -134,7 +134,7 @@ const Sidebar = (props: Props) => {
 
   return (
     <nav className={classes.drawer}>
-      <Hidden smUp implementation="css">
+      <Hidden mdUp implementation="css">
         <Drawer
           container={
             window !== undefined ? () => window().document.body : undefined
@@ -153,7 +153,7 @@ const Sidebar = (props: Props) => {
           {drawer}
         </Drawer>
       </Hidden>
-      <Hidden xsDown implementation="css">
+      <Hidden smDown implementation="css">
         <Drawer
           classes={{
             paper: classes.drawerPaper,
@@ -171,7 +171,8 @@ const Sidebar = (props: Props) => {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     drawer: {
-      [theme.breakpoints.up('sm')]: {
+      width: 0,
+      [theme.breakpoints.up('md')]: {
         width: drawerWidth,
         flexShrink: 0,
       },

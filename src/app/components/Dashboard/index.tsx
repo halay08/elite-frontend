@@ -1,11 +1,6 @@
 import { lazyLoad } from 'utils/loadable';
 
-export const Information = lazyLoad(
-  () => import('./Information'),
-  module => module.Information,
-);
-
-export const Tabs = lazyLoad(
-  () => import('./Tabs'),
-  module => module.Tabs,
+export const Profile = lazyLoad(
+  () => import('./Profile'),
+  module => module.Profile,
 );
