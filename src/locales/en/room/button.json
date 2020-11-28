@@ -1,5 +1,7 @@
 {
   "button": {
+    "joinNow": "Join Now",
+    "cancel": "Cancel",
     "disconnect": "Disconnect",
     "video": {
       "noVideo": "No Video",
