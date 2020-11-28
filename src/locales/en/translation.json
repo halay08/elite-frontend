@@ -105,6 +105,11 @@
       "learnedSessions": "Learned",
       "upcomingSessions": "Upcoming",
       "link": "See profile"
+    },
+    "activities": {
+      "header": "My activities",
+      "link": "View all my activities",
+      "empty": "No activities"
     }
   },
   "forgetPasswordForm": {
