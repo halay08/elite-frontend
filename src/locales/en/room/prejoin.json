@@ -8,6 +8,7 @@
     "enterTheRoomNameLikeToJoin": "Enter your name and the name of a room you'd like to join",
     "connectionLost": "Connection Lost:",
     "reconnecting": "Reconnecting to room...",
+    "permissionAlert": "You are not allow to access this call!",
     "unsupportedBrowserWarning": {
       "heading": "Browser or context not supported",
       "openOneOf": "Please open this application in one of the",
