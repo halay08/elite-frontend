@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     toolbar: theme.mixins.toolbar, // necessary for content to be below app bar
     content: {
+      overflowX: 'hidden',
       flexGrow: 1,
       padding: theme.spacing(2),
     },

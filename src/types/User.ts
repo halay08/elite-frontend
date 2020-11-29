@@ -42,7 +42,7 @@ export const mockUser: User = {
     coming: 5,
     completed: 5,
   },
-  profileCompleted: 0,
+  profileCompleted: 70,
   country: { name: 'US' },
 };
 

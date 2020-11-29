@@ -88,7 +88,7 @@ const Header = (props: Props) => {
     <>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          <Hidden smUp implementation="css">
+          <Hidden mdUp implementation="css">
             <IconButton edge="start" onClick={handleDrawerToggle}>
               <MenuIcon />
             </IconButton>
@@ -122,7 +122,9 @@ const Header = (props: Props) => {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
-      [theme.breakpoints.up('sm')]: {
+      width: '100%',
+      marginLeft: 0,
+      [theme.breakpoints.up('md')]: {
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
       },

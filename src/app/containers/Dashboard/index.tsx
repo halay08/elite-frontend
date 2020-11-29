@@ -1,25 +1,18 @@
 import React from 'react';
-import { Container } from '@material-ui/core';
-import { Information, Tabs } from 'app/components/Dashboard';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Box, Grid } from '@material-ui/core';
+import { Profile } from 'app/components/Dashboard/Profile';
 
 const Dashboard = () => {
-  const classes = useStyles();
-
   return (
-    <Container className={classes.root}>
-      <Information />
-      <Tabs />
-    </Container>
+    <Box pt={{ xl: 4 }} clone>
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={4} xl={3}>
+          <Profile />
+        </Grid>
+        <Grid item xs={12} md={8} xl={9}></Grid>
+      </Grid>
+    </Box>
   );
 };
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      padding: 0,
-    },
-  }),
-);
 
 export { Dashboard };
