@@ -10,7 +10,8 @@
       "review": "{{reviews}} happy users",
       "noReview": "There's no reviews for this tutor"
     },
-    "category": "Category"
+    "category": "Category",
+    "bookButton": "Book"
   },
   "sortBar": {
     "title": "Sort by:",
@@ -20,7 +21,9 @@
       "0": "Select",
       "-1": "Decreasing",
       "1": "Increasing"
-    }
+    },
+    "online": "Online now",
+    "advancedFilter": "Advanced filter"
   },
   "banner": {
     "title": "You will only learn from the best tutors.",

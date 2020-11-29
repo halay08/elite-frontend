@@ -14,6 +14,7 @@ declare module '@material-ui/core/styles/createPalette' {
     light?: string;
     dark?: string;
     table?: string;
+    border?: string;
     white?: string;
   }
 }

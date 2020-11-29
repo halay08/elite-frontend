@@ -5,18 +5,16 @@ import React, {
   EventHandler,
   SyntheticEvent,
 } from 'react';
-import ToptipBanner from './ToptipBanner';
-import RecommendBar from './RecommendBar';
+import HeaderBar from './HeaderBar';
 import { Tutor } from 'types/Tutor';
 import { TutorService } from 'services';
 import TutorThumbnail from './TutorThumbnail';
-import { translations } from 'locales/i18n';
 import { Grid, Chip, makeStyles, Grow } from '@material-ui/core';
-import AdvancedSearch from './AdvancedSearch';
 import SortBar from './SortBar';
 import { connect } from 'react-redux';
 import { State } from 'store/configureStore';
-import { setTutors, handleAdvancedSearchPopup } from 'store/TutorBlock/actions';
+import { setTutors } from 'store/TutorBlock/actions';
+import VideoPopup from './VideoPopup';
 
 const mapStateToProps = (state: State) => ({
   tutors: state.tutorBlockReducer.tutors,
@@ -24,23 +22,24 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = dispatch => ({
   setTutors: tutors => dispatch(setTutors(tutors)),
-  handlePopup: isOpen => dispatch(handleAdvancedSearchPopup(isOpen)),
 });
 
 type TutorBlockType = {
   tutors: Array<Tutor>;
   setTutors: Function;
-  handlePopup: Function;
 };
-function TutorBlock({
-  tutors,
-  setTutors,
-  handlePopup,
-}: TutorBlockType): JSX.Element {
+function TutorBlock({ tutors, setTutors }: TutorBlockType): JSX.Element {
   const classes = useStyle();
-  const { recommendedBar, availableBar } = translations;
-  const [barText, setBarText] = useState<object>(recommendedBar);
   const [chips, setChips] = useState<Array<string>>([]);
+  const [selectedTutor, setSelectedTutor] = useState<Tutor | null>(null);
+  const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
+
+  const handleClosePopup = () => setIsOpenPopup(false);
+
+  const handleDelete = (chip): EventHandler<SyntheticEvent> => () => {
+    const newChips = chip ? chips.filter(c => c !== chip) : [];
+    setChips(newChips);
+  };
 
   useEffect(() => {
     (async () => {
@@ -51,25 +50,28 @@ function TutorBlock({
     })();
   }, [setTutors]);
 
-  const getOnlineTutors = useCallback(async (): Promise<void> => {
-    setTutors([]);
+  const handleFilterOnline = useCallback(
+    async (isOnline: boolean): Promise<void> => {
+      setTutors([]);
 
-    const onlineTutors = await TutorService.getOnlineTutors();
-    setTutors(onlineTutors);
-    setBarText(availableBar);
-  }, [availableBar, setTutors]);
+      if (!isOnline) {
+        const allTutors = await TutorService.getAllTutors();
+        setTutors(allTutors);
 
-  const getAll = useCallback(async (): Promise<void> => {
-    setTutors([]);
+        setChips(preState => preState.filter(c => c !== 'online'));
+        return;
+      }
 
-    const allTutors = await TutorService.getAllTutors();
-    setTutors(allTutors);
-    setBarText(availableBar);
-  }, [availableBar, setTutors]);
+      const onlineTutors = await TutorService.getOnlineTutors();
+      setTutors(onlineTutors);
 
-  const handleAdvancedSearch = useCallback(
+      setChips(preState => ['online', ...preState]);
+    },
+    [setTutors],
+  );
+
+  const handleFilter = useCallback(
     async (data: object) => {
-      handlePopup(false);
       const newChips = Object.values(data).filter(value => value !== 'all');
       if (newChips.length) {
         setChips(['', ...newChips]);
@@ -79,43 +81,49 @@ function TutorBlock({
         setTutors(allTutors);
       }
     },
-    [handlePopup, setTutors],
+    [setTutors],
   );
-
-  const handleDelete = (chip): EventHandler<SyntheticEvent> => () => {
-    const newChips = chip ? chips.filter(c => c !== chip) : [];
-    setChips(newChips);
-  };
 
   return (
     <>
-      <ToptipBanner handleGetAll={getAll} />
-      <RecommendBar
-        tutors={tutors}
-        text={barText}
-        handleGetOnline={getOnlineTutors}
+      <VideoPopup
+        isOpen={isOpenPopup}
+        handleClose={handleClosePopup}
+        tutor={selectedTutor}
       />
-      <SortBar />
-      <div>
-        {chips.map((chip, index) => (
-          <Chip
-            key={index}
-            label={chip}
-            color="primary"
-            onDelete={handleDelete(chip)}
-          />
-        ))}
-      </div>
-      <Grid container direction="row" spacing={3} className={classes.container}>
+      <HeaderBar tutors={tutors} />
+      <SortBar handleFilter={handleFilter} filterOnline={handleFilterOnline} />
+      {!!chips.length && (
+        <div className={classes.chipsBar}>
+          {chips.map((chip, index) => (
+            <Chip
+              key={index}
+              label={chip}
+              color="primary"
+              onDelete={handleDelete(chip)}
+            />
+          ))}
+        </div>
+      )}
+      <Grid container direction="row" spacing={4} className={classes.container}>
         {tutors.map((tutor, index) => (
           <Grow key={index} in={true} timeout={1000}>
-            <Grid item xs={12} sm={12} md={6} lg={4}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              onClick={() => {
+                setSelectedTutor(tutor);
+                setIsOpenPopup(true);
+              }}
+            >
               <TutorThumbnail tutor={tutor} />
             </Grid>
           </Grow>
         ))}
       </Grid>
-      <AdvancedSearch onSubmit={handleAdvancedSearch} />
     </>
   );
 }
@@ -126,5 +134,10 @@ const useStyle = makeStyles(theme => ({
   container: {
     width: '100%',
     margin: 0,
+    border: `1px solid ${theme.palette.background.table}`,
+    backgroundColor: '#F9FBFF',
+  },
+  chipsBar: {
+    marginBottom: theme.spacing(2),
   },
 }));

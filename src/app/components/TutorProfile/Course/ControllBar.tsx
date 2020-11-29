@@ -1,9 +1,9 @@
 import React from 'react';
 import { translations } from 'locales/i18n';
 import { useTranslation } from 'react-i18next';
-import { Grid, makeStyles, Typography, Button, Icon } from '@material-ui/core';
+import { Grid, makeStyles, Typography, Button } from '@material-ui/core';
 import WeekSelector from './WeekSelector';
-import CartSVG from 'statics/shopping-bag.svg';
+import { ReactComponent as CartSVG } from 'statics/shopping-bag.svg';
 
 type ControllBarType = {
   handleChangeWeek: (value) => void;
@@ -34,13 +34,7 @@ function ControllBar({ handleChangeWeek }: ControllBarType): JSX.Element {
           color="primary"
           className={classes.bookButton}
         >
-          <Icon>
-            <img
-              className={classes.iconImg}
-              src={CartSVG}
-              alt={translator(tutorCourse.book)}
-            />
-          </Icon>
+          <CartSVG />
           <Typography component="span" className={classes.buttonText}>
             {translator(tutorCourse.book)}
           </Typography>

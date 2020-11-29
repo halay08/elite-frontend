@@ -1,0 +1,28 @@
+{
+  "filterBar": {
+    "category": {
+      "label": "Category",
+      "options": {
+        "0": "Select category"
+      }
+    },
+    "expertise": {
+      "label": "Expertise",
+      "options": {
+        "0": "Select expertise"
+      }
+    },
+    "time": {
+      "label": "From date",
+      "options": {
+        "0": "Select date"
+      }
+    },
+    "language": {
+      "label": "Language",
+      "options": {
+        "0": "Select language"
+      }
+    }
+  }
+}
