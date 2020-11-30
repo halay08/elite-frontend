@@ -65,14 +65,19 @@ const Sidebar = (props: Props) => {
     return expanded[index] ? <ExpandLess /> : <ExpandMore />;
   };
 
-  const renderParentItem = (item: SidebarItem, index: number) => {
+  const renderParentItem = (
+    item: SidebarItem,
+    index: number,
+    isMobile: boolean,
+  ) => {
     const props = isEmpty(item.subItems)
       ? { component: Link, to: item.link }
       : { onClick: () => handleExpandItem(index) };
+
     return (
       <ListItem
         button
-        key={`sidebar-item-${index}`}
+        key={`${isMobile ? 'mobile-' : ''}sidebar-${item.itemKey}`}
         classes={{
           container: classes.sidebarItem,
           root: classes.sidebarItemRoot,
@@ -89,30 +94,34 @@ const Sidebar = (props: Props) => {
     );
   };
 
-  const renderItem = (item: SidebarItem, index: number) => {
+  const renderItem = (item: SidebarItem, index: number, isMobile: boolean) => {
     if (isEmpty(item.subItems)) {
-      return renderParentItem(item, index);
+      return renderParentItem(item, index, isMobile);
     }
 
     return (
       <>
-        {renderParentItem(item, index)}
+        {renderParentItem(item, index, isMobile)}
         <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {item.subItems.map((item, index) => (
+            {item.subItems.map((subItem, index) => (
               <ListItem
                 button
                 className={classes.nested}
-                key={`sidebar-sub-item-${index}`}
+                key={`${isMobile ? 'mobile-' : ''}sidebar-${item.itemKey}-${
+                  subItem.itemKey
+                }`}
                 classes={{
                   container: classes.sidebarItem,
                   root: classes.sidebarItemRoot,
                 }}
                 component={Link}
-                to={item.link}
-                selected={isActiveItem(item.link)}
+                to={subItem.link}
+                selected={isActiveItem(subItem.link)}
               >
-                <ListItemText primary={translator(itemsTexts[item.itemKey])} />
+                <ListItemText
+                  primary={translator(itemsTexts[subItem.itemKey])}
+                />
               </ListItem>
             ))}
           </List>
@@ -121,12 +130,12 @@ const Sidebar = (props: Props) => {
     );
   };
 
-  const drawer = (
+  const drawer = (isMobile: boolean) => (
     <div>
       <UserInfo />
       <List>
         {items.map((item, index) => (
-          <>{renderItem(item, index)}</>
+          <>{renderItem(item, index, isMobile)}</>
         ))}
       </List>
     </div>
@@ -134,7 +143,7 @@ const Sidebar = (props: Props) => {
 
   return (
     <nav className={classes.drawer}>
-      <Hidden mdUp implementation="css">
+      <Hidden mdUp implementation="js">
         <Drawer
           container={
             window !== undefined ? () => window().document.body : undefined
@@ -150,10 +159,10 @@ const Sidebar = (props: Props) => {
             keepMounted: true,
           }}
         >
-          {drawer}
+          {drawer(true)}
         </Drawer>
       </Hidden>
-      <Hidden smDown implementation="css">
+      <Hidden smDown implementation="js">
         <Drawer
           classes={{
             paper: classes.drawerPaper,
@@ -161,7 +170,7 @@ const Sidebar = (props: Props) => {
           variant="permanent"
           open
         >
-          {drawer}
+          {drawer(false)}
         </Drawer>
       </Hidden>
     </nav>

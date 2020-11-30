@@ -11,8 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { translations } from 'locales/i18n';
 
 import { Helmet } from 'react-helmet-async';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import { HomePage } from './containers/HomePage/Loadable';
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { Login } from './containers/Login/Loadable';
 import { ProfileRedirect, LoginRedirect } from './components/Router';
@@ -41,7 +40,9 @@ export function App() {
 
       <AppStateProvider>
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/">
+            <Redirect to={UniversalRouteConfig.dashboard} />
+          </Route>
           <ProfileRedirect
             exact
             path={UniversalRouteConfig.login}
@@ -82,10 +83,10 @@ export function App() {
             path={UniversalRouteConfig.accountAction}
             component={AccountAction}
           />
-          <PrivateRoute exact path="/room">
+          <PrivateRoute exact path={UniversalRouteConfig.room.rooms}>
             <VideoApp />
           </PrivateRoute>
-          <PrivateRoute path="/room/:URLRoomName">
+          <PrivateRoute path={UniversalRouteConfig.room.room}>
             <VideoApp />
           </PrivateRoute>
           <Route component={NotFoundPage} />

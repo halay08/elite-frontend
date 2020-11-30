@@ -24,6 +24,10 @@ class UniversalRouteConfig implements routeConfig.IUniversal {
     list: '/help',
     get: '/help/:slug',
   };
+  room = {
+    rooms: '/rooms',
+    room: '/rooms/:URLRoomName',
+  };
 }
 
 export default new UniversalRouteConfig();
