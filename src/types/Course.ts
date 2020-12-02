@@ -8,6 +8,30 @@ export enum TutorSessionStatus {
   COMPLETED = 4,
 }
 
+type ICoursePolicyCondition = {
+  allow: boolean;
+
+  condition?: number;
+
+  refundPercent?: number;
+};
+
+type ICoursePolicy = {
+  freeFirstCourse: ICoursePolicyCondition;
+
+  // Allow to cancel course before starting
+  cancelBeforeStarting: ICoursePolicyCondition;
+
+  // Allow to cancel course while it's in progress
+  cancelInProgress: ICoursePolicyCondition;
+
+  // Allow to cancel session before the course starts
+  cancelSessionBeforeStarting: ICoursePolicyCondition;
+
+  // Allow to cancel session while the course is in progress
+  cancelSessionInProgress: ICoursePolicyCondition;
+};
+
 export type Course = {
   id: number;
 
@@ -19,7 +43,7 @@ export type Course = {
 
   status: TutorSessionStatus;
 
-  policies?: unknown;
+  policies: ICoursePolicy;
 };
 
 export const mockCourse1 = {
@@ -28,6 +52,25 @@ export const mockCourse1 = {
   sessions: [mockSession1],
   status: TutorSessionStatus.AVAILABLE,
   totalCost: 232,
+  policies: {
+    freeFirstCourse: {
+      allow: true,
+    },
+    cancelBeforeStarting: {
+      allow: false,
+    },
+    cancelInProgress: {
+      allow: true,
+      condition: 2,
+      refundPercent: 50,
+    },
+    cancelSessionBeforeStarting: {
+      allow: false,
+    },
+    cancelSessionInProgress: {
+      allow: false,
+    },
+  },
 };
 
 export const mockCourse2 = {
@@ -36,4 +79,24 @@ export const mockCourse2 = {
   sessions: [mockSession1, mockSession2],
   status: TutorSessionStatus.AVAILABLE,
   totalCost: 456,
+  policies: {
+    freeFirstCourse: {
+      allow: false,
+    },
+    cancelBeforeStarting: {
+      allow: true,
+      refundPercent: 70,
+    },
+    cancelInProgress: {
+      allow: true,
+      condition: 2,
+      refundPercent: 50,
+    },
+    cancelSessionBeforeStarting: {
+      allow: false,
+    },
+    cancelSessionInProgress: {
+      allow: false,
+    },
+  },
 };

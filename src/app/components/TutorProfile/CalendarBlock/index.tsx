@@ -1,5 +1,5 @@
 import { lazyLoad } from 'utils/loadable';
 export default lazyLoad(
-  () => import('./Course'),
+  () => import('./CalendarBlock'),
   module => module.default,
 );
