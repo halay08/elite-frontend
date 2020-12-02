@@ -17,6 +17,14 @@ export declare namespace routeConfig {
     calendar: string;
 
     help: IHelp;
+
+    room: IRoom;
+  };
+
+  type IRoom = {
+    rooms: string;
+
+    room: string;
   };
 
   type IHelp = {

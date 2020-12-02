@@ -94,12 +94,16 @@ export function RouterBreadcrumbs() {
                 const text = translator(translated[link.key]) || link.key;
                 if (link.to) {
                   return (
-                    <LinkRouter color="inherit" to={link.to}>
+                    <LinkRouter color="inherit" to={link.to} key={link.to}>
                       {text}
                     </LinkRouter>
                   );
                 }
-                return <Typography color="inherit">{text}</Typography>;
+                return (
+                  <Typography color="inherit" key={link.to}>
+                    {text}
+                  </Typography>
+                );
               })}
             </Breadcrumbs>
           );

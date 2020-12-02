@@ -3,6 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useLocalStorageState } from 'ahooks';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import { UniversalRouteConfig } from 'config/routes';
 
 export default function useFirebaseAuth() {
   const [user, setUser] = useState<firebase.User | null>(null);
@@ -32,11 +33,13 @@ export default function useFirebaseAuth() {
   );
 
   useEffect(() => {
-    // firebase.initializeApp(firebaseConfig);
     firebase.auth().onAuthStateChanged(user => {
       setUser(user);
       setIsAuthReady(true);
-      if (user) {
+      if (
+        user &&
+        currentLocation.indexOf(`${UniversalRouteConfig.room.rooms}/`) !== -1
+      ) {
         history.push(currentLocation);
       }
     });
